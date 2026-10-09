@@ -1,0 +1,249 @@
+﻿<!DOCTYPE html>
+<html lang="en" dir="ltr" class="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nursery Products — Little Haven</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%2373836D'><path d='M4 2v20h2V14h12v8h2V2H4zm14 10H6V5h12v7zM7 7h2v3H7V7zm4 0h2v3h-2V7zm4 0h2v3h-2V7z'/></svg>">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        sage: { 50: '#f4f7f4', 100: '#e3ebe3', 200: '#c7d6c6', 300: '#a6bea4', 400: '#86a183', 500: '#73836D', 600: '#5c6957', 700: '#465042', 800: '#323a30', 900: '#2b3328' }
+                    }
+                }
+            }
+        }
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body class="antialiased font-sans flex flex-col min-h-screen bg-white dark:bg-gray-900 transition-colors duration-300">
+
+    <nav class="sticky top-0 z-50 bg-white/95 dark:bg-gray-900/95 backdrop-blur-md border-b border-gray-200 dark:border-gray-800 shadow-sm transition-colors duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <a href="../index.html" class="flex items-center gap-2 group" data-toast="Opening Home...">
+                    <svg class="w-8 h-8 text-sage-600 dark:text-sage-400 group-hover:text-sage-500 transition-colors" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M4 2v20h2V14h12v8h2V2H4zm14 10H6V5h12v7zM7 7h2v3H7V7zm4 0h2v3h-2V7zm4 0h2v3h-2V7z"/>
+                    </svg>
+                    <span class="font-serif text-xl font-medium tracking-wide text-gray-900 dark:text-white transition-colors duration-300">LITTLE HAVEN</span>
+                </a>
+                
+                <div class="hidden lg:flex space-x-8 items-center h-full">
+                    <div class="relative group h-full flex items-center">
+                        <button class="flex items-center text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors">
+                            Home
+                            <svg class="w-4 h-4 ml-1 opacity-50" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                        </button>
+                        <div class="absolute left-0 top-full mt-0 w-48 bg-white dark:bg-gray-800 rounded-md shadow-lg py-1 border border-gray-100 dark:border-gray-700 hidden group-hover:block z-50">
+                            <a href="../index.html" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700">Home 1 - Collection</a>
+                            <a href="our-story.html" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700">Home 2 - Our Story</a>
+                        </div>
+                    </div>
+                    <a href="products.html" class="text-sm font-semibold text-sage-600 dark:text-white transition-colors">Nursery Products</a>
+                    <a href="registry.html" class="text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors">Baby Registry</a>
+                    <a href="contact.html" class="text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors">Contact</a>
+                </div>
+
+                <div class="hidden lg:flex items-center space-x-2">
+                    <button id="dir-toggle" class="p-2 text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors rounded-full" title="Toggle RTL/LTR">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4"></path></svg>
+                    </button>
+                    <button id="theme-toggle" class="p-2 text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors rounded-full" title="Toggle Theme"></button>
+                    
+                    <a href="wishlist.html" class="relative p-2 text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors rounded-full" title="Wishlist">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path></svg>
+                        <span id="nav-wishlist-badge" class="absolute top-0 right-0 inline-flex items-center justify-center px-1.5 py-0.5 text-[10px] font-bold leading-none text-white bg-sage-600 rounded-full">0</span>
+                    </a>
+                    
+                    <a href="cart.html" class="relative p-2 text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors rounded-full" title="Cart">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
+                        <span id="nav-cart-badge" class="absolute top-0 right-0 inline-flex items-center justify-center px-1.5 py-0.5 text-[10px] font-bold leading-none text-white bg-sage-600 rounded-full">0</span>
+                    </a>
+
+                    <a href="products.html" class="ml-2 hidden lg:inline-flex items-center justify-center px-4 py-2 bg-sage-600 hover:bg-sage-700 text-white text-sm font-medium rounded-md transition-colors shadow-sm" data-toast="Opening Products...">Get Product</a>
+                </div>
+
+                <button id="mobile-menu-btn" class="lg:hidden p-2 text-gray-600 dark:text-gray-300">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <main class="flex-grow pt-10 pb-20 px-4 max-w-7xl mx-auto fade-up">
+        
+        <header class="text-center mb-16">
+            <h1 class="text-4xl font-serif text-gray-900 dark:text-white mb-4 transition-colors">Nursery Collection</h1>
+            <p class="text-gray-500 dark:text-gray-400 max-w-2xl mx-auto transition-colors">Thoughtfully crafted furniture designed to bring warmth, safety, and elegance to your little one's space.</p>
+        </header>
+
+        <div class="flex flex-col md:flex-row justify-between items-center mb-10 gap-4 border-b border-gray-200 dark:border-gray-800 pb-6 transition-colors">
+            <div class="flex overflow-x-auto w-full md:w-auto pb-2 md:pb-0 gap-6 hide-scrollbar" id="category-filters">
+                <button class="filter-btn active text-sage-600 dark:text-sage-400 font-medium whitespace-nowrap transition-colors border-b-2 border-sage-600 dark:border-sage-400 pb-1" data-cat="All">All Pieces</button>
+                <button class="filter-btn text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white font-medium whitespace-nowrap transition-colors border-b-2 border-transparent pb-1" data-cat="Cribs & Cots">Cribs & Cots</button>
+                <button class="filter-btn text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white font-medium whitespace-nowrap transition-colors border-b-2 border-transparent pb-1" data-cat="Dressers">Dressers</button>
+                <button class="filter-btn text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white font-medium whitespace-nowrap transition-colors border-b-2 border-transparent pb-1" data-cat="Rocking Chairs">Rocking Chairs</button>
+                <button class="filter-btn text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white font-medium whitespace-nowrap transition-colors border-b-2 border-transparent pb-1" data-cat="Storage">Storage</button>
+            </div>
+            
+            <div class="w-full md:w-auto flex justify-between items-center gap-4">
+                <span class="text-sm text-gray-500 dark:text-gray-400 transition-colors" id="product-count">0 items</span>
+                <select id="sort-select" class="bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 text-gray-700 dark:text-gray-300 text-sm rounded-md focus:ring-sage-500 focus:border-sage-500 block p-2 transition-colors">
+                    <option>Featured</option>
+                    <option>Price: Low to High</option>
+                    <option>Price: High to Low</option>
+                    <option>Newest Arrivals</option>
+                </select>
+            </div>
+        </div>
+
+        <div id="product-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+            <!-- JS generates products here -->
+        </div>
+
+    </main>
+
+    <footer class="bg-gray-50 dark:bg-gray-800 border-t border-gray-200 dark:border-gray-700 pt-16 pb-8 transition-colors duration-300 mt-auto">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
+                <div>
+                    <a href="../index.html" class="flex items-center gap-2 mb-4 group text-gray-900 dark:text-white">
+                        <svg class="w-6 h-6 text-sage-600 dark:text-sage-400" fill="currentColor" viewBox="0 0 24 24"><path d="M4 2v20h2V14h12v8h2V2H4zm14 10H6V5h12v7zM7 7h2v3H7V7zm4 0h2v3h-2V7zm4 0h2v3h-2V7z"/></svg>
+                        <span class="font-serif text-lg font-medium tracking-wide">LITTLE HAVEN</span>
+                    </a>
+                    <p class="text-gray-500 dark:text-gray-400 text-sm mb-6 leading-relaxed">Beautiful spaces for little beginnings. Premium nursery furniture designed for modern families.</p>
+                </div>
+                <div>
+                    <h4 class="font-medium text-gray-900 dark:text-white mb-4 uppercase text-sm tracking-wider">Contact Us</h4>
+                    <address class="not-italic text-sm text-gray-500 dark:text-gray-400 space-y-3">
+                        <p>Little Haven Studio</p>
+                        <p>18 Willow Lane, Design District</p>
+                        <p>+91 98765 43210</p>
+                        <p><a href="mailto:hello@littlehavenstudio.com" class="hover:text-gray-900 dark:hover:text-white transition-colors">hello@littlehavenstudio.com</a></p>
+                    </address>
+                </div>
+                <div>
+                    <h4 class="font-medium text-gray-900 dark:text-white mb-4 uppercase text-sm tracking-wider">Explore</h4>
+                    <ul class="text-sm text-gray-500 dark:text-gray-400 space-y-3">
+                        <li><a href="../index.html" class="hover:text-gray-900 dark:hover:text-white transition-colors">Nursery Collection</a></li>
+                        <li><a href="our-story.html" class="hover:text-gray-900 dark:hover:text-white transition-colors">Our Story</a></li>
+                        <li><a href="products.html" class="hover:text-gray-900 dark:hover:text-white transition-colors">Products</a></li>
+                        <li><a href="registry.html" class="hover:text-gray-900 dark:hover:text-white transition-colors">Registry</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-medium text-gray-900 dark:text-white mb-4 uppercase text-sm tracking-wider">Newsletter</h4>
+                    <p class="text-sm text-gray-500 dark:text-gray-400 mb-3">Subscribe for updates and inspiration.</p>
+                    <form onsubmit="event.preventDefault(); showToast('Subscribed Successfully!'); this.reset();" class="flex">
+                        <input type="email" placeholder="Your email address" required class="w-full px-3 py-2 bg-white dark:bg-gray-700 border border-gray-200 dark:border-gray-600 rounded-l-md focus:ring-sage-500 text-sm text-gray-900 dark:text-white transition-colors">
+                        <button type="submit" class="px-4 py-2 bg-sage-600 text-white text-sm font-medium rounded-r-md hover:bg-sage-700 transition-colors">Send</button>
+                    </form>
+                </div>
+            </div>
+            <div class="border-t border-gray-200 dark:border-gray-700 pt-8 text-center md:text-left md:flex justify-between items-center text-sm text-gray-400 dark:text-gray-500">
+                <p>&copy; 2024 Little Haven Studio. All rights reserved. (Fictional Store)</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../js/main.js"></script>
+        <script>
+        const productsList = [
+            { id: 'prod-01', name: 'Haven Convertible Crib', category: 'Cribs & Cots', price: 35000, image: 'https://i.pinimg.com/1200x/96/18/18/961818b0e00fdf7140885a8682a7ce93.jpg' },
+            { id: 'prod-02', name: 'Willow 3-in-1 Crib', category: 'Cribs & Cots', price: 28000, image: 'https://i.pinimg.com/1200x/d7/27/64/d7276431482de4de5a81a06d5539705c.jpg' },
+            { id: 'prod-03', name: 'Meadow Cot', category: 'Cribs & Cots', price: 22000, image: 'https://i.pinimg.com/736x/7d/3c/9d/7d3c9d3fe387f6092a0e916cdd467cc3.jpg' },
+            { id: 'prod-04', name: 'Luna Mini Crib', category: 'Cribs & Cots', price: 18000, image: 'https://i.pinimg.com/736x/9c/fe/59/9cfe597ae8f014d068d441a14aa84023.jpg' },
+            { id: 'prod-05', name: 'Haven 6-Drawer Dresser', category: 'Dressers', price: 45000, image: 'https://i.pinimg.com/1200x/30/e3/cc/30e3ccd8185377de379cd9442c8b71be.jpg' },
+            { id: 'prod-06', name: 'Willow Changing Dresser', category: 'Dressers', price: 32000, image: 'https://i.pinimg.com/736x/8b/d4/b2/8bd4b20ab76b007402e2fa18f29cfd1b.jpg' },
+            { id: 'prod-07', name: 'Oakline Storage Dresser', category: 'Dressers', price: 38000, image: 'https://i.pinimg.com/1200x/3e/d4/64/3ed4649513cc3be22f158dd81bb9d5eb.jpg' },
+            { id: 'prod-08', name: 'Cloud Nursery Rocker', category: 'Rocking Chairs', price: 25000, image: 'https://i.pinimg.com/236x/da/de/c5/dadec541ceb91305eb7f78d8ff29bbef.jpg' },
+            { id: 'prod-09', name: 'Little Haven Toy Cabinet', category: 'Storage', price: 15000, image: 'https://i.pinimg.com/736x/53/7d/38/537d38f12a7845155d5fb2453382acde.jpg' }
+        ];
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const grid = document.getElementById('product-grid');
+            const count = document.getElementById('product-count');
+            
+            const urlParams = new URLSearchParams(window.location.search);
+            const initialCategory = urlParams.get('category') || 'All';
+            let currentCategory = initialCategory;
+
+            const renderProducts = () => {
+                let filtered = currentCategory === 'All' ? [...productsList] : productsList.filter(p => p.category === currentCategory);
+                
+                const sortSelect = document.getElementById('sort-select');
+                if (sortSelect) {
+                    if (sortSelect.value === 'Price: Low to High') {
+                        filtered.sort((a, b) => a.price - b.price);
+                    } else if (sortSelect.value === 'Price: High to Low') {
+                        filtered.sort((a, b) => b.price - a.price);
+                    } else if (sortSelect.value === 'Newest Arrivals') {
+                        filtered.reverse();
+                    }
+                }
+                
+                grid.innerHTML = filtered.map(product => `
+                    <div class="product-card bg-white dark:bg-gray-800 rounded-lg overflow-hidden border border-gray-100 dark:border-gray-700 shadow-sm flex flex-col group transition-colors fade-up">
+                        <div class="relative aspect-[4/3] bg-gray-100 dark:bg-gray-700 overflow-hidden">
+                            <img src="${product.image}" alt="${product.name}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                        </div>
+                        <div class="p-4 flex flex-col flex-grow relative">
+                            <button class="wishlist-btn absolute top-2 right-2 text-gray-400 hover:text-red-500 transition-colors" title="Add to Wishlist" data-id="${product.id}">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path></svg>
+                            </button>
+                            <div class="text-xs text-gray-500 dark:text-gray-400 mb-1">${product.category}</div>
+                            <h3 class="font-serif text-lg mb-1 text-gray-900 dark:text-white transition-colors">${product.name}</h3>
+                            <div class="flex justify-between items-center mt-auto pt-4">
+                                <span class="font-medium text-gray-900 dark:text-white transition-colors">₹${product.price.toLocaleString('en-IN')}</span>
+                                <a href="product-details.html?id=${product.id}" class="text-sm underline text-gray-600 dark:text-gray-300 hover:text-sage-600 transition-colors">View Details</a>
+                            </div>
+                        </div>
+                    </div>
+                `).join('');
+
+                count.textContent = `${filtered.length} items`;
+                
+                if(window.initBadges) window.initBadges();
+                if(window.initAnimations) window.initAnimations();
+            };
+
+            renderProducts();
+
+            const filterBtns = document.querySelectorAll('.filter-btn');
+            
+            filterBtns.forEach(btn => {
+                if (btn.dataset.cat === initialCategory) {
+                    btn.classList.add('text-sage-600', 'dark:text-sage-400', 'border-sage-600', 'dark:border-sage-400');
+                    btn.classList.remove('text-gray-500', 'dark:text-gray-400', 'border-transparent');
+                }
+                
+                btn.addEventListener('click', () => {
+                    filterBtns.forEach(b => {
+                        b.classList.remove('text-sage-600', 'dark:text-sage-400', 'border-sage-600', 'dark:border-sage-400');
+                        b.classList.add('text-gray-500', 'dark:text-gray-400', 'border-transparent');
+                    });
+                    
+                    btn.classList.add('text-sage-600', 'dark:text-sage-400', 'border-sage-600', 'dark:border-sage-400');
+                    btn.classList.remove('text-gray-500', 'dark:text-gray-400', 'border-transparent');
+                    
+                    currentCategory = btn.dataset.cat;
+                    renderProducts();
+                });
+            });
+
+            const sortSelect = document.getElementById('sort-select');
+            if (sortSelect) {
+                sortSelect.addEventListener('change', () => {
+                    renderProducts();
+                });
+            }
+        });
+    </script>
+</body>
+</html>
+

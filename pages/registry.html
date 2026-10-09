@@ -1,0 +1,220 @@
+﻿<!DOCTYPE html>
+<html lang="en" dir="ltr" class="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Baby Registry — Little Haven</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%2373836D'><path d='M4 2v20h2V14h12v8h2V2H4zm14 10H6V5h12v7zM7 7h2v3H7V7zm4 0h2v3h-2V7zm4 0h2v3h-2V7z'/></svg>">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        sage: { 50: '#f4f7f4', 100: '#e3ebe3', 200: '#c7d6c6', 300: '#a6bea4', 400: '#86a183', 500: '#73836D', 600: '#5c6957', 700: '#465042', 800: '#323a30', 900: '#2b3328' }
+                    }
+                }
+            }
+        }
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body class="antialiased font-sans flex flex-col min-h-screen bg-white dark:bg-gray-900 transition-colors duration-300">
+
+    <nav class="sticky top-0 z-50 bg-white/95 dark:bg-gray-900/95 backdrop-blur-md border-b border-gray-200 dark:border-gray-800 shadow-sm transition-colors duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <a href="../index.html" class="flex items-center gap-2 group" data-toast="Opening Home...">
+                    <svg class="w-8 h-8 text-sage-600 dark:text-sage-400 group-hover:text-sage-500 transition-colors" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M4 2v20h2V14h12v8h2V2H4zm14 10H6V5h12v7zM7 7h2v3H7V7zm4 0h2v3h-2V7zm4 0h2v3h-2V7z"/>
+                    </svg>
+                    <span class="font-serif text-xl font-medium tracking-wide text-gray-900 dark:text-white transition-colors duration-300">LITTLE HAVEN</span>
+                </a>
+                
+                <div class="hidden lg:flex space-x-8 items-center h-full">
+                    <div class="relative group h-full flex items-center">
+                        <button class="flex items-center text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors">
+                            Home
+                            <svg class="w-4 h-4 ml-1 opacity-50" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                        </button>
+                        <div class="absolute left-0 top-full mt-0 w-48 bg-white dark:bg-gray-800 rounded-md shadow-lg py-1 border border-gray-100 dark:border-gray-700 hidden group-hover:block z-50">
+                            <a href="../index.html" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700">Home 1 - Collection</a>
+                            <a href="our-story.html" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700">Home 2 - Our Story</a>
+                        </div>
+                    </div>
+                    <a href="products.html" class="text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors">Nursery Products</a>
+                    <a href="registry.html" class="text-sm font-semibold text-sage-600 dark:text-white transition-colors">Baby Registry</a>
+                    <a href="contact.html" class="text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors">Contact</a>
+                </div>
+
+                <div class="hidden lg:flex items-center space-x-2">
+                    <button id="dir-toggle" class="p-2 text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors rounded-full" title="Toggle RTL/LTR">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4"></path></svg>
+                    </button>
+                    <button id="theme-toggle" class="p-2 text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors rounded-full" title="Toggle Theme"></button>
+                    
+                    <a href="wishlist.html" class="relative p-2 text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors rounded-full" title="Wishlist">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path></svg>
+                        <span id="nav-wishlist-badge" class="absolute top-0 right-0 inline-flex items-center justify-center px-1.5 py-0.5 text-[10px] font-bold leading-none text-white bg-sage-600 rounded-full">0</span>
+                    </a>
+                    
+                    <a href="cart.html" class="relative p-2 text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors rounded-full" title="Cart">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
+                        <span id="nav-cart-badge" class="absolute top-0 right-0 inline-flex items-center justify-center px-1.5 py-0.5 text-[10px] font-bold leading-none text-white bg-sage-600 rounded-full">0</span>
+                    </a>
+
+                    <a href="products.html" class="ml-2 hidden lg:inline-flex items-center justify-center px-4 py-2 bg-sage-600 hover:bg-sage-700 text-white text-sm font-medium rounded-md transition-colors shadow-sm" data-toast="Opening Products...">Get Product</a>
+                </div>
+
+                <button id="mobile-menu-btn" class="lg:hidden p-2 text-gray-600 dark:text-gray-300">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <main class="flex-grow">
+        <section class="relative h-[60vh] min-h-[400px] flex items-center justify-center fade-up">
+            <img src="https://images.unsplash.com/photo-1519689680058-324335c77eba?auto=format&fit=crop&w=1920&q=80" alt="Baby Registry" class="absolute inset-0 w-full h-full object-cover">
+            <div class="absolute inset-0 bg-black/40 dark:bg-black/60 transition-colors"></div>
+            <div class="relative z-10 text-center px-4">
+                <h1 class="text-4xl md:text-5xl font-serif text-white mb-6 drop-shadow-md">Build a Registry Made for Your Little One.</h1>
+                <p class="text-lg text-white/90 max-w-2xl mx-auto drop-shadow">Select the perfect pieces with expert guidance, and share your beautiful nursery vision with family and friends.</p>
+            </div>
+        </section>
+
+        <!-- Professional Design addition for "Raw" content -->
+        <section class="py-24 max-w-6xl mx-auto px-4 fade-up">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-serif text-gray-900 dark:text-white mb-4 transition-colors">How It Works</h2>
+                <p class="text-gray-600 dark:text-gray-400 transition-colors">A seamless experience for you and your loved ones.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+                <div class="bg-white dark:bg-gray-800 p-10 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-700 text-center transition-colors">
+                    <div class="w-16 h-16 mx-auto bg-sage-50 dark:bg-sage-900/30 text-sage-600 dark:text-sage-400 rounded-full flex items-center justify-center mb-6">
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path></svg>
+                    </div>
+                    <h3 class="text-xl font-serif text-gray-900 dark:text-white mb-3 transition-colors">1. Create</h3>
+                    <p class="text-gray-600 dark:text-gray-400 transition-colors">Start your registry online in minutes. Personalize your page with a welcome note and expected arrival date.</p>
+                </div>
+                
+                <div class="bg-white dark:bg-gray-800 p-10 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-700 text-center transition-colors">
+                    <div class="w-16 h-16 mx-auto bg-sage-50 dark:bg-sage-900/30 text-sage-600 dark:text-sage-400 rounded-full flex items-center justify-center mb-6">
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"></path></svg>
+                    </div>
+                    <h3 class="text-xl font-serif text-gray-900 dark:text-white mb-3 transition-colors">2. Curate</h3>
+                    <p class="text-gray-600 dark:text-gray-400 transition-colors">Browse our curated collections and add premium nursery furniture and decor directly to your list.</p>
+                </div>
+                
+                <div class="bg-white dark:bg-gray-800 p-10 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-700 text-center transition-colors">
+                    <div class="w-16 h-16 mx-auto bg-sage-50 dark:bg-sage-900/30 text-sage-600 dark:text-sage-400 rounded-full flex items-center justify-center mb-6">
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z"></path></svg>
+                    </div>
+                    <h3 class="text-xl font-serif text-gray-900 dark:text-white mb-3 transition-colors">3. Share</h3>
+                    <p class="text-gray-600 dark:text-gray-400 transition-colors">Share your beautiful list with loved ones via a unique link, making gifting thoughtful and easy.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Perks Section -->
+        <section class="bg-sage-50 dark:bg-sage-900/20 py-24 px-4 transition-colors fade-up">
+            <div class="max-w-7xl mx-auto">
+                <div class="text-center mb-16">
+                    <h2 class="text-3xl font-serif text-gray-900 dark:text-white mb-4 transition-colors">Registry Perks</h2>
+                    <p class="text-gray-600 dark:text-gray-400 transition-colors">Exclusive benefits for Little Haven parents.</p>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-8 text-center">
+                    <div>
+                        <div class="w-12 h-12 mx-auto bg-white dark:bg-gray-800 text-sage-600 dark:text-sage-400 rounded-full flex items-center justify-center mb-4 shadow-sm border border-gray-100 dark:border-gray-700 transition-colors">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v13m0-13V6a2 2 0 112 2h-2zm0 0V5.5A2.5 2.5 0 109.5 8H12zm-7 4h14M5 12a2 2 0 110-4h14a2 2 0 110 4M5 12v7a2 2 0 002 2h10a2 2 0 002-2v-7"></path></svg>
+                        </div>
+                        <h3 class="font-medium text-gray-900 dark:text-white mb-2 transition-colors">15% Completion Discount</h3>
+                        <p class="text-sm text-gray-600 dark:text-gray-400 transition-colors">Enjoy 15% off remaining registry items for up to 6 months.</p>
+                    </div>
+                    <div>
+                        <div class="w-12 h-12 mx-auto bg-white dark:bg-gray-800 text-sage-600 dark:text-sage-400 rounded-full flex items-center justify-center mb-4 shadow-sm border border-gray-100 dark:border-gray-700 transition-colors">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 8h14M5 8a2 2 0 110-4h14a2 2 0 110 4M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8m-9 4h4"></path></svg>
+                        </div>
+                        <h3 class="font-medium text-gray-900 dark:text-white mb-2 transition-colors">Free Shipping & Returns</h3>
+                        <p class="text-sm text-gray-600 dark:text-gray-400 transition-colors">Free delivery on all registry orders over ₹5,000.</p>
+                    </div>
+                    <div>
+                        <div class="w-12 h-12 mx-auto bg-white dark:bg-gray-800 text-sage-600 dark:text-sage-400 rounded-full flex items-center justify-center mb-4 shadow-sm border border-gray-100 dark:border-gray-700 transition-colors">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
+                        </div>
+                        <h3 class="font-medium text-gray-900 dark:text-white mb-2 transition-colors">Extended 365-Day Returns</h3>
+                        <p class="text-sm text-gray-600 dark:text-gray-400 transition-colors">Changed your mind? Return any unused item within a year.</p>
+                    </div>
+                    <div>
+                        <div class="w-12 h-12 mx-auto bg-white dark:bg-gray-800 text-sage-600 dark:text-sage-400 rounded-full flex items-center justify-center mb-4 shadow-sm border border-gray-100 dark:border-gray-700 transition-colors">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4"></path></svg>
+                        </div>
+                        <h3 class="font-medium text-gray-900 dark:text-white mb-2 transition-colors">Expert Design Help</h3>
+                        <p class="text-sm text-gray-600 dark:text-gray-400 transition-colors">Complimentary virtual consultations to build your perfect registry.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA -->
+        <section class="py-24 px-4 text-center border-t border-gray-200 dark:border-gray-800 fade-up transition-colors">
+            <h2 class="text-4xl font-serif text-gray-900 dark:text-white mb-6 transition-colors">Ready to begin?</h2>
+            <p class="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto mb-10 transition-colors">Start building your Little Haven registry today.</p>
+            <div class="flex flex-col sm:flex-row justify-center gap-4">
+                <a href="products.html" class="px-8 py-4 bg-gray-900 dark:bg-sage-600 text-white font-medium rounded hover:bg-gray-800 dark:hover:bg-sage-700 transition-colors shadow-sm inline-block">Shop Collection</a>
+                <button class="px-8 py-4 border border-gray-300 dark:border-gray-600 text-gray-900 dark:text-white font-medium rounded hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors shadow-sm" onclick="let name = prompt('Enter the full name of the registrant to search:'); if(name) { showToast('Searching for ' + name + '...'); setTimeout(() => alert('No active registry found for ' + name + '.'), 1500); }">Find a Registry</button>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-gray-50 dark:bg-gray-800 border-t border-gray-200 dark:border-gray-700 pt-16 pb-8 transition-colors duration-300 mt-auto">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
+                <div>
+                    <a href="../index.html" class="flex items-center gap-2 mb-4 group text-gray-900 dark:text-white">
+                        <svg class="w-6 h-6 text-sage-600 dark:text-sage-400" fill="currentColor" viewBox="0 0 24 24"><path d="M4 2v20h2V14h12v8h2V2H4zm14 10H6V5h12v7zM7 7h2v3H7V7zm4 0h2v3h-2V7zm4 0h2v3h-2V7z"/></svg>
+                        <span class="font-serif text-lg font-medium tracking-wide">LITTLE HAVEN</span>
+                    </a>
+                    <p class="text-gray-500 dark:text-gray-400 text-sm mb-6 leading-relaxed">Beautiful spaces for little beginnings. Premium nursery furniture designed for modern families.</p>
+                </div>
+                <div>
+                    <h4 class="font-medium text-gray-900 dark:text-white mb-4 uppercase text-sm tracking-wider">Contact Us</h4>
+                    <address class="not-italic text-sm text-gray-500 dark:text-gray-400 space-y-3">
+                        <p>Little Haven Studio</p>
+                        <p>18 Willow Lane, Design District</p>
+                        <p>+91 98765 43210</p>
+                        <p><a href="mailto:hello@littlehavenstudio.com" class="hover:text-gray-900 dark:hover:text-white transition-colors">hello@littlehavenstudio.com</a></p>
+                    </address>
+                </div>
+                <div>
+                    <h4 class="font-medium text-gray-900 dark:text-white mb-4 uppercase text-sm tracking-wider">Explore</h4>
+                    <ul class="text-sm text-gray-500 dark:text-gray-400 space-y-3">
+                        <li><a href="../index.html" class="hover:text-gray-900 dark:hover:text-white transition-colors">Nursery Collection</a></li>
+                        <li><a href="our-story.html" class="hover:text-gray-900 dark:hover:text-white transition-colors">Our Story</a></li>
+                        <li><a href="products.html" class="hover:text-gray-900 dark:hover:text-white transition-colors">Products</a></li>
+                        <li><a href="registry.html" class="hover:text-gray-900 dark:hover:text-white transition-colors">Registry</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-medium text-gray-900 dark:text-white mb-4 uppercase text-sm tracking-wider">Newsletter</h4>
+                    <p class="text-sm text-gray-500 dark:text-gray-400 mb-3">Subscribe for updates and inspiration.</p>
+                    <form onsubmit="event.preventDefault(); showToast('Subscribed Successfully!'); this.reset();" class="flex">
+                        <input type="email" placeholder="Your email address" required class="w-full px-3 py-2 bg-white dark:bg-gray-700 border border-gray-200 dark:border-gray-600 rounded-l-md focus:ring-sage-500 text-sm text-gray-900 dark:text-white transition-colors">
+                        <button type="submit" class="px-4 py-2 bg-sage-600 text-white text-sm font-medium rounded-r-md hover:bg-sage-700 transition-colors">Send</button>
+                    </form>
+                </div>
+            </div>
+            <div class="border-t border-gray-200 dark:border-gray-700 pt-8 text-center md:text-left md:flex justify-between items-center text-sm text-gray-400 dark:text-gray-500">
+                <p>&copy; 2024 Little Haven Studio. All rights reserved. (Fictional Store)</p>
+            </div>
+        </div>
+    </footer>
+    <script src="../js/main.js"></script>
+</body>
+</html>
+
+
+
