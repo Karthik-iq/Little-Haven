@@ -1,4 +1,4 @@
-﻿document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', () => {
   initTheme();
   initDirection();
   initMobileMenu();
@@ -93,6 +93,7 @@ function initMobileMenu() {
         </div>
         <div class="flex-grow overflow-y-auto p-6 flex flex-col gap-6">
             <a href="${rootPrefix}index.html" class="text-xl font-medium text-gray-900 dark:text-white border-b border-gray-100 dark:border-gray-800 pb-4">Home</a>
+            <a href="${rootPrefix}${pagePrefix}about.html" class="text-xl font-medium text-gray-900 dark:text-white border-b border-gray-100 dark:border-gray-800 pb-4">About</a>
             <a href="${rootPrefix}${pagePrefix}products.html" class="text-xl font-medium text-gray-900 dark:text-white border-b border-gray-100 dark:border-gray-800 pb-4">Nursery Products</a>
             <a href="${rootPrefix}${pagePrefix}registry.html" class="text-xl font-medium text-gray-900 dark:text-white border-b border-gray-100 dark:border-gray-800 pb-4">Baby Registry</a>
             <a href="${rootPrefix}${pagePrefix}contact.html" class="text-xl font-medium text-gray-900 dark:text-white border-b border-gray-100 dark:border-gray-800 pb-4">Contact</a>

@@ -22,10 +22,10 @@
 
 [data-theme="dark"] {
   --bg-color: #1A1A18;
-  --surface-color: #2D2D2A;
+  --surface-color: #3f3f3f;
   --text-color: var(--cream);
-  --text-muted: #A0A09B;
-  --border-color: #3F3F3C;
+  --text-muted: #f9f9f9;
+  --border-color: #919191;
 }
 
 body {
