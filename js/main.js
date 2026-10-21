@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', () => {
+function initApp() {
   initTheme();
   initDirection();
   initMobileMenu();
@@ -6,7 +6,13 @@ document.addEventListener('DOMContentLoaded', () => {
   initLinkToasts();
   initAnimations();
   initBadges();
-});
+}
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initApp);
+} else {
+  initApp();
+}
 
 // Theme
 function initTheme() {
@@ -72,9 +78,17 @@ function initMobileMenu() {
       mobileMenu.id = 'mobile-menu';
       mobileMenu.className = 'fixed inset-0 bg-white dark:bg-gray-900 z-[100] hidden flex-col transition-colors';
       
-      const isRoot = window.location.pathname.endsWith('index.html') || window.location.pathname.endsWith('/');
-      const rootPrefix = isRoot ? '' : '../';
-      const pagePrefix = isRoot ? 'pages/' : '';
+      const isInPages = window.location.pathname.toLowerCase().includes('/pages/') || 
+                        window.location.pathname.toLowerCase().includes('\\pages\\');
+      const home1Href = isInPages ? '../index.html' : 'index.html';
+      const home2Href = isInPages ? 'our-story.html' : 'pages/our-story.html';
+      const aboutHref = isInPages ? 'about.html' : 'pages/about.html';
+      const productsHref = isInPages ? 'products.html' : 'pages/products.html';
+      const registryHref = isInPages ? 'registry.html' : 'pages/registry.html';
+      const blogHref = isInPages ? 'blog.html' : 'pages/blog.html';
+      const contactHref = isInPages ? 'contact.html' : 'pages/contact.html';
+      const wishlistHref = isInPages ? 'wishlist.html' : 'pages/wishlist.html';
+      const cartHref = isInPages ? 'cart.html' : 'pages/cart.html';
       
       mobileMenu.innerHTML = `
         <div class="flex justify-between items-center p-4 border-b border-gray-200 dark:border-gray-800">
@@ -92,21 +106,28 @@ function initMobileMenu() {
             </div>
         </div>
         <div class="flex-grow overflow-y-auto p-6 flex flex-col gap-6">
-            <a href="${rootPrefix}index.html" class="text-xl font-medium text-gray-900 dark:text-white border-b border-gray-100 dark:border-gray-800 pb-4">Home</a>
-            <a href="${rootPrefix}${pagePrefix}about.html" class="text-xl font-medium text-gray-900 dark:text-white border-b border-gray-100 dark:border-gray-800 pb-4">About</a>
-            <a href="${rootPrefix}${pagePrefix}products.html" class="text-xl font-medium text-gray-900 dark:text-white border-b border-gray-100 dark:border-gray-800 pb-4">Nursery Products</a>
-            <a href="${rootPrefix}${pagePrefix}registry.html" class="text-xl font-medium text-gray-900 dark:text-white border-b border-gray-100 dark:border-gray-800 pb-4">Baby Registry</a>
-            <a href="${rootPrefix}${pagePrefix}contact.html" class="text-xl font-medium text-gray-900 dark:text-white border-b border-gray-100 dark:border-gray-800 pb-4">Contact</a>
+            <div class="border-b border-gray-100 dark:border-gray-800 pb-4">
+                <span class="text-xs font-semibold uppercase tracking-wider text-sage-600 dark:text-sage-400 block mb-2">Home</span>
+                <div class="flex flex-col gap-3 pl-3 border-l-2 border-sage-200 dark:border-sage-800">
+                    <a href="${home1Href}" class="text-lg font-medium text-gray-900 dark:text-white hover:text-sage-600 dark:hover:text-sage-400 transition-colors">Home 1 - Collection</a>
+                    <a href="${home2Href}" class="text-lg font-medium text-gray-900 dark:text-white hover:text-sage-600 dark:hover:text-sage-400 transition-colors">Home 2 - Our Story</a>
+                </div>
+            </div>
+            <a href="${aboutHref}" class="text-xl font-medium text-gray-900 dark:text-white border-b border-gray-100 dark:border-gray-800 pb-4">About</a>
+            <a href="${productsHref}" class="text-xl font-medium text-gray-900 dark:text-white border-b border-gray-100 dark:border-gray-800 pb-4">Nursery Products</a>
+            <a href="${registryHref}" class="text-xl font-medium text-gray-900 dark:text-white border-b border-gray-100 dark:border-gray-800 pb-4">Baby Registry</a>
+            <a href="${blogHref}" class="text-xl font-medium text-gray-900 dark:text-white border-b border-gray-100 dark:border-gray-800 pb-4">Blog</a>
+            <a href="${contactHref}" class="text-xl font-medium text-gray-900 dark:text-white border-b border-gray-100 dark:border-gray-800 pb-4">Contact</a>
             
             <div class="mt-4 flex flex-col gap-6">
-                <a href="${rootPrefix}${pagePrefix}wishlist.html" class="relative flex items-center gap-4 text-gray-600 dark:text-gray-300 w-max">
+                <a href="${wishlistHref}" class="relative flex items-center gap-4 text-gray-600 dark:text-gray-300 w-max">
                     <div class="relative">
                         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path></svg>
                         <span id="mobile-wishlist-badge" class="absolute -top-1 -right-2 inline-flex items-center justify-center px-1.5 py-0.5 text-[10px] font-bold leading-none text-white bg-sage-600 rounded-full">0</span>
                     </div>
                     <span class="text-lg">Wishlist</span>
                 </a>
-                <a href="${rootPrefix}${pagePrefix}cart.html" class="relative flex items-center gap-4 text-gray-600 dark:text-gray-300 w-max">
+                <a href="${cartHref}" class="relative flex items-center gap-4 text-gray-600 dark:text-gray-300 w-max">
                     <div class="relative">
                         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
                         <span id="mobile-cart-badge" class="absolute -top-1 -right-2 inline-flex items-center justify-center px-1.5 py-0.5 text-[10px] font-bold leading-none text-white bg-sage-600 rounded-full">0</span>
@@ -257,7 +278,7 @@ function initAnimations() {
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
-        entry.target.classList.add('opacity-100', 'translate-y-0');
+        entry.target.classList.add('visible', 'opacity-100', 'translate-y-0');
         entry.target.classList.remove('opacity-0', 'translate-y-4');
         observer.unobserve(entry.target);
       }
