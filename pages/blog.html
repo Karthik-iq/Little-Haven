@@ -27,22 +27,22 @@
     <nav class="sticky top-0 z-50 bg-white/95 dark:bg-gray-900/95 backdrop-blur-md border-b border-gray-200 dark:border-gray-800 shadow-sm transition-colors duration-300">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-20">
-                <a href="../index.html" class="flex items-center gap-2 group" data-toast="Opening Home...">
+                <a href="../index.html" class="flex items-center gap-2 group shrink-0" data-toast="Opening Home...">
                     <svg class="w-8 h-8 text-sage-600 dark:text-sage-400 group-hover:text-sage-500 transition-colors" fill="currentColor" viewBox="0 0 24 24">
                         <path d="M4 2v20h2V14h12v8h2V2H4zm14 10H6V5h12v7zM7 7h2v3H7V7zm4 0h2v3h-2V7zm4 0h2v3h-2V7z"/>
                     </svg>
                     <span class="font-serif text-xl font-medium tracking-wide text-gray-900 dark:text-white transition-colors duration-300">LITTLE HAVEN</span>
                 </a>
                 
-                <div class="hidden lg:flex space-x-8 items-center h-full">
+                <div class="hidden lg:flex space-x-3 xl:space-x-6 2xl:space-x-8 items-center h-full">
                     <div class="relative group h-full flex items-center">
-                        <button class="flex items-center text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white">
+                        <button class="flex items-center text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white whitespace-nowrap">
                             Home
                             <svg class="w-4 h-4 ml-1 opacity-50" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
                         </button>
                         <div class="absolute left-0 top-full mt-0 w-48 bg-white dark:bg-gray-800 rounded-md shadow-lg py-1 border border-gray-100 dark:border-gray-700 hidden group-hover:block z-50">
-                            <a href="../index.html" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700">Home 1 - Collection</a>
-                            <a href="our-story.html" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700">Home 2 - Our Story</a>
+                            <a href="../index.html" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700 whitespace-nowrap">Home 1 - Collection</a>
+                            <a href="our-story.html" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700 whitespace-nowrap">Home 2 - Our Story</a>
                         </div>
                     </div>
                     <a href="about.html" class="text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors">About</a>
@@ -52,7 +52,7 @@
                     <a href="contact.html" class="text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors">Contact</a>
                 </div>
 
-                <div class="hidden lg:flex items-center space-x-2">
+                <div class="hidden lg:flex items-center space-x-1.5 xl:space-x-2 shrink-0">
                     <button id="dir-toggle" class="p-2 text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors rounded-full" title="Toggle RTL/LTR">
                         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4"></path></svg>
                     </button>
@@ -68,7 +68,7 @@
                         <span id="nav-cart-badge" class="absolute top-0 right-0 inline-flex items-center justify-center px-1.5 py-0.5 text-[10px] font-bold leading-none text-white bg-sage-600 rounded-full">0</span>
                     </a>
 
-                    <a href="products.html" class="ml-2 hidden lg:inline-flex items-center justify-center px-4 py-2 bg-sage-600 hover:bg-sage-700 text-white text-sm font-medium rounded-md transition-colors shadow-sm" data-toast="Opening Products...">Get Product</a>
+                    <a href="products.html" class="ml-1 xl:ml-2 hidden lg:inline-flex items-center justify-center px-3 py-1.5 xl:px-4 xl:py-2 bg-sage-600 hover:bg-sage-700 text-white text-xs xl:text-sm font-medium rounded-md transition-colors shadow-sm whitespace-nowrap" data-toast="Opening Products...">Get Product</a>
                 </div>
 
                 <button id="mobile-menu-btn" class="lg:hidden p-2 text-gray-600 dark:text-gray-300">
@@ -82,53 +82,60 @@
                 <!-- JOURNAL HERO -->
         <section class="relative h-[60vh] min-h-[480px] flex items-center justify-center overflow-hidden fade-up">
             <div class="absolute inset-0 z-0">
-                <img src="https://images.pexels.com/photos/28680664/pexels-photo-28680664.jpeg" alt="Little Haven Journal Nursery" class="w-full h-full object-cover">
-                <div class="absolute inset-0 bg-gray-900/50 dark:bg-gray-900/75 transition-colors"></div>
+                <img src="https://images.pexels.com/photos/7491726/pexels-photo-7491726.jpeg" alt="Little Haven Journal Nursery" class="w-full h-full object-cover">
             </div>
             <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
-                <span class="inline-block text-xs uppercase tracking-widest text-sage-200 font-semibold mb-4 px-4 py-1.5 bg-white/10 dark:bg-black/30 backdrop-blur-md rounded-full border border-white/20">Little Haven Journal</span>
-                <h1 class="text-4xl md:text-6xl font-serif text-white mb-6 drop-shadow-md leading-tight">Stories &amp; Inspiration for Modern Families</h1>
-                <p class="text-lg md:text-xl text-white/90 max-w-2xl mx-auto font-light leading-relaxed drop-shadow">
-                    Expert nursery design guides, infant sleep wellness, sustainable living ideas, and honest stories from parents.
-                </p>
+                <h1 class="text-3xl sm:text-4xl md:text-6xl font-serif text-white mb-6 leading-tight hero-text-shadow" style="text-shadow: 0 2px 4px rgba(0,0,0,0.9), 0 4px 20px rgba(0,0,0,0.8), 0 0 30px rgba(0,0,0,0.6);">Stories &amp; Inspiration for Modern Families</h1>
+                <p class="text-lg md:text-xl text-white max-w-2xl mx-auto font-medium leading-relaxed hero-text-shadow" style="text-shadow: 0 2px 4px rgba(0,0,0,0.9), 0 4px 20px rgba(0,0,0,0.8), 0 0 30px rgba(0,0,0,0.6);">Expert nursery design guides, infant sleep wellness, sustainable living ideas, and honest stories from parents.</p>
             </div>
         </section>
 
         <!-- FEATURED POST -->
         <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 -mt-16 mb-20 relative z-20">
-            <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-xl overflow-hidden border border-gray-100 dark:border-gray-700 fade-up">
-                <div class="grid grid-cols-1 lg:grid-cols-12 gap-0">
-                    <div class="lg:col-span-7 relative h-72 lg:h-auto min-h-[380px]">
-                        <img src="https://images.pexels.com/photos/12328200/pexels-photo-12328200.jpeg" alt="Serene Nursery Room" class="w-full h-full object-cover">
-                        <span class="absolute top-4 left-4 bg-sage-600 text-white text-xs font-semibold px-3 py-1 rounded-full uppercase tracking-wider">Featured Story</span>
-                    </div>
-                    <div class="lg:col-span-5 p-8 lg:p-12 flex flex-col justify-center">
-                        <div class="flex items-center gap-3 text-xs text-gray-500 dark:text-gray-400 mb-3">
-                            <span class="font-semibold text-sage-600 dark:text-sage-400 uppercase tracking-wider">Nursery Design</span>
-                            <span>•</span>
-                            <span>Oct 18, 2026</span>
-                            <span>•</span>
-                            <span>5 min read</span>
-                        </div>
-                        <h2 class="text-2xl md:text-3xl font-serif text-gray-900 dark:text-white mb-4 leading-snug">
-                            Creating a Calming Sanctuary: 7 Principles for Your Baby's First Room
-                        </h2>
-                        <p class="text-gray-600 dark:text-gray-300 text-sm md:text-base leading-relaxed mb-6">
-                            From mindful clutter reduction to regulating circadian lighting and acoustic softening, discover how intentional architecture supports deeper infant sleep.
-                        </p>
-                        <div class="flex items-center justify-between pt-6 border-t border-gray-100 dark:border-gray-700">
-                            <div class="flex items-center gap-3">
-                                <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=80&h=80&q=80" alt="Emma Vance" class="w-10 h-10 rounded-full object-cover ring-2 ring-sage-200">
-                                <div>
-                                    <div class="text-sm font-medium text-gray-900 dark:text-white">Emma Vance</div>
-                                    <div class="text-xs text-gray-500">Head of Interior Design</div>
-                                </div>
-                            </div>
+    <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-xl overflow-hidden border border-gray-100 dark:border-gray-700 fade-up">
+        <!-- Default grid behavior is to stretch items to equal height -->
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-0">
+            
+    
+            <div class="lg:col-span-7 relative h-72 lg:h-auto">
+                
+                <img src="https://images.pexels.com/photos/3958952/pexels-photo-3958952.jpeg" alt="Serene Nursery Room" class="absolute inset-0 w-full h-full object-cover object-center">
+                
+                <span class="absolute top-4 left-4 z-10 bg-sage-600 text-white text-xs font-semibold px-3 py-1 rounded-full uppercase tracking-wider">Featured Story</span>
+            </div>
+            
+            <!-- Text Content Side -->
+            <div class="lg:col-span-5 p-8 lg:p-12 flex flex-col justify-center">
+                <div class="flex items-center gap-3 text-xs text-gray-500 dark:text-gray-400 mb-3">
+                    <span class="font-semibold text-sage-600 dark:text-sage-400 uppercase tracking-wider">Nursery Design</span>
+                    <span>•</span>
+                    <span>Oct 18, 2026</span>
+                    <span>•</span>
+                    <span>5 min read</span>
+                </div>
+                
+                <h2 class="text-2xl md:text-3xl font-serif text-gray-900 dark:text-white mb-4 leading-snug">
+                    Creating a Calming Sanctuary: 7 Principles for Your Baby's First Room
+                </h2>
+                
+                <p class="text-gray-600 dark:text-gray-300 text-sm md:text-base leading-relaxed mb-6">
+                    From mindful clutter reduction to regulating circadian lighting and acoustic softening, discover how intentional architecture supports deeper infant sleep.
+                </p>
+                
+                <div class="flex items-center justify-between pt-6 border-t border-gray-100 dark:border-gray-700">
+                    <div class="flex items-center gap-3">
+                        <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=80&h=80&q=80" alt="Emma Vance" class="w-10 h-10 rounded-full object-cover ring-2 ring-sage-200">
+                        <div>
+                            <div class="text-sm font-medium text-gray-900 dark:text-white">Emma Vance</div>
+                            <div class="text-xs text-gray-500">Head of Interior Design</div>
                         </div>
                     </div>
                 </div>
             </div>
-        </section>
+            
+        </div>
+    </div>
+</section>
 
         <!-- CATEGORY FILTER TABS -->
         <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-12">

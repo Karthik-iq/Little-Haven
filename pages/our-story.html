@@ -26,22 +26,22 @@
     <nav class="sticky top-0 z-50 bg-white/95 dark:bg-gray-900/95 backdrop-blur-md border-b border-gray-200 dark:border-gray-800 shadow-sm transition-colors duration-300">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-20">
-                <a href="../index.html" class="flex items-center gap-2 group" data-toast="Opening Home...">
+                <a href="../index.html" class="flex items-center gap-2 group shrink-0" data-toast="Opening Home...">
                     <svg class="w-8 h-8 text-sage-600 dark:text-sage-400 group-hover:text-sage-500 transition-colors" fill="currentColor" viewBox="0 0 24 24">
                         <path d="M4 2v20h2V14h12v8h2V2H4zm14 10H6V5h12v7zM7 7h2v3H7V7zm4 0h2v3h-2V7zm4 0h2v3h-2V7z"/>
                     </svg>
                     <span class="font-serif text-xl font-medium tracking-wide text-gray-900 dark:text-white transition-colors duration-300">LITTLE HAVEN</span>
                 </a>
                 
-                <div class="hidden lg:flex space-x-8 items-center h-full">
+                <div class="hidden lg:flex space-x-3 xl:space-x-6 2xl:space-x-8 items-center h-full">
                     <div class="relative group h-full flex items-center">
-                        <button class="flex items-center text-sm font-medium text-sage-600 dark:text-sage-400">
+                        <button class="flex items-center text-sm font-medium text-sage-600 dark:text-sage-400 whitespace-nowrap">
                             Home
                             <svg class="w-4 h-4 ml-1 opacity-50" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
                         </button>
                         <div class="absolute left-0 top-full mt-0 w-48 bg-white dark:bg-gray-800 rounded-md shadow-lg py-1 border border-gray-100 dark:border-gray-700 hidden group-hover:block z-50">
-                            <a href="../index.html" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700">Home 1 - Collection</a>
-                            <a href="our-story.html" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 bg-gray-50 dark:bg-gray-700/50">Home 2 - Our Story</a>
+                            <a href="../index.html" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700 whitespace-nowrap">Home 1 - Collection</a>
+                            <a href="our-story.html" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 bg-gray-50 dark:bg-gray-700/50 whitespace-nowrap">Home 2 - Our Story</a>
                         </div>
                     </div>
                     <a href="about.html" class="text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors">About</a>
@@ -51,7 +51,7 @@
                     <a href="contact.html" class="text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors">Contact</a>
                 </div>
 
-                <div class="hidden lg:flex items-center space-x-2">
+                <div class="hidden lg:flex items-center space-x-1.5 xl:space-x-2 shrink-0">
                     <button id="dir-toggle" class="p-2 text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors rounded-full" title="Toggle RTL/LTR">
                         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4"></path></svg>
                     </button>
@@ -67,7 +67,7 @@
                         <span id="nav-cart-badge" class="absolute top-0 right-0 inline-flex items-center justify-center px-1.5 py-0.5 text-[10px] font-bold leading-none text-white bg-sage-600 rounded-full">0</span>
                     </a>
 
-                    <a href="products.html" class="ml-2 hidden lg:inline-flex items-center justify-center px-4 py-2 bg-sage-600 hover:bg-sage-700 text-white text-sm font-medium rounded-md transition-colors shadow-sm" data-toast="Opening Products...">Get Product</a>
+                    <a href="products.html" class="ml-1 xl:ml-2 hidden lg:inline-flex items-center justify-center px-3 py-1.5 xl:px-4 xl:py-2 bg-sage-600 hover:bg-sage-700 text-white text-xs xl:text-sm font-medium rounded-md transition-colors shadow-sm whitespace-nowrap" data-toast="Opening Products...">Get Product</a>
                 </div>
 
                 <button id="mobile-menu-btn" class="lg:hidden p-2 text-gray-600 dark:text-gray-300">
@@ -80,10 +80,9 @@
     <main class="flex-grow">
         <!-- 1. HERO -->
         <section class="relative h-[60vh] min-h-[500px] flex items-center justify-center fade-up">
-            <img src="https://images.pexels.com/photos/16579302/pexels-photo-16579302.jpeg" alt="Beautiful Nursery" class="absolute inset-0 w-full h-full object-cover">
-            <div class="absolute inset-0 bg-black/40"></div>
+            <img src="https://images.pexels.com/photos/7937990/pexels-photo-7937990.jpeg" alt="Beautiful Nursery" class="absolute inset-0 w-full h-full object-cover">
             <div class="relative z-10 text-center px-4">
-                <h1 class="text-5xl md:text-6xl font-serif text-white drop-shadow-md">Designed Around the Moments That Matter.</h1>
+                <h1 class="text-3xl sm:text-4xl md:text-6xl font-serif text-white hero-text-shadow" style="text-shadow: 0 2px 4px rgba(0,0,0,0.9), 0 4px 20px rgba(0,0,0,0.8), 0 0 30px rgba(0,0,0,0.6);">Designed Around the Moments That Matter.</h1>
             </div>
         </section>
 
@@ -160,13 +159,13 @@
                     </div>
                 </div>
                 <div class="rounded-xl overflow-hidden group cursor-pointer border border-gray-100 dark:border-gray-700 transition-colors">
-                    <img src="https://images.pexels.com/photos/15704083/pexels-photo-15704083.jpeg" alt="Willow Collection" class="w-full aspect-[4/3] object-cover group-hover:scale-105 transition-transform duration-500">
+                    <img src="https://imgs.search.brave.com/g3mDbdERAvEShx5H5FUOqn0Od4CGE91rGDb2C23Brj4/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9nYWlu/c3ZpbGxlLmNvbS5h/dS9jZG4vc2hvcC9j/b2xsZWN0aW9ucy9X/aWxsb3dfQW1lcmlj/YW5fV2FsbnV0X0Jl/ZHNpZGVfVGFibGVf/Mjg4MF94XzE2MjBf/MS5qcGc_dj0xNzQ0/Njk2NzYyJndpZHRo/PTI0MDA" alt="Willow Collection" class="w-full aspect-[4/3] object-cover group-hover:scale-105 transition-transform duration-500">
                     <div class="p-6 bg-white dark:bg-gray-800 text-center transition-colors">
                         <h3 class="font-serif text-xl text-gray-900 dark:text-white transition-colors">The Willow Collection</h3>
                     </div>
                 </div>
                 <div class="rounded-xl overflow-hidden group cursor-pointer border border-gray-100 dark:border-gray-700 transition-colors">
-                    <img src="https://images.pexels.com/photos/19008043/pexels-photo-19008043.jpeg" alt="Oakline Collection" class="w-full aspect-[4/3] object-cover group-hover:scale-105 transition-transform duration-500">
+                    <img src="https://images.pexels.com/photos/4964488/pexels-photo-4964488.jpeg" alt="Oakline Collection" class="w-full aspect-[4/3] object-cover group-hover:scale-105 transition-transform duration-500">
                     <div class="p-6 bg-white dark:bg-gray-800 text-center transition-colors">
                         <h3 class="font-serif text-xl text-gray-900 dark:text-white transition-colors">The Oakline Collection</h3>
                     </div>
@@ -237,7 +236,7 @@
         <!-- Sustainability -->
         <section class="py-24 bg-gray-900 dark:bg-gray-950 text-white relative overflow-hidden transition-colors">
             <div class="absolute inset-0 opacity-20">
-                <img src="https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?auto=format&fit=crop&w=1920&q=80" alt="Forest" class="w-full h-full object-cover">
+                <img src="https://images.pexels.com/photos/3958952/pexels-photo-3958952.jpeg" alt="Forest" class="w-full h-full object-cover">
             </div>
             <div class="relative z-10 max-w-5xl mx-auto px-4 text-center fade-up">
                 <svg class="w-12 h-12 mx-auto text-sage-400 mb-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>

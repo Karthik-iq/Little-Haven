@@ -78,8 +78,9 @@ function initMobileMenu() {
       mobileMenu.id = 'mobile-menu';
       mobileMenu.className = 'fixed inset-0 bg-white dark:bg-gray-900 z-[100] hidden flex-col transition-colors';
       
-      const isInPages = window.location.pathname.toLowerCase().includes('/pages/') || 
-                        window.location.pathname.toLowerCase().includes('\\pages\\');
+      const path = window.location.pathname.toLowerCase().replace(/\\/g, '/');
+      const isInPages = path.includes('/pages/');
+      
       const home1Href = isInPages ? '../index.html' : 'index.html';
       const home2Href = isInPages ? 'our-story.html' : 'pages/our-story.html';
       const aboutHref = isInPages ? 'about.html' : 'pages/about.html';
@@ -100,54 +101,62 @@ function initMobileMenu() {
                 <button id="mobile-theme-toggle" class="p-2 text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors rounded-full" title="Toggle Theme">
                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg>
                 </button>
-                <button id="mobile-menu-close" class="p-2 text-gray-600 dark:text-gray-300 ml-2">
+                <button id="mobile-menu-close" class="p-2 text-gray-600 dark:text-gray-300 ml-2" aria-label="Close menu">
                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
                 </button>
             </div>
         </div>
-        <div class="flex-grow overflow-y-auto p-6 flex flex-col gap-6">
-            <div class="border-b border-gray-100 dark:border-gray-800 pb-4">
-                <span class="text-xs font-semibold uppercase tracking-wider text-sage-600 dark:text-sage-400 block mb-2">Home</span>
-                <div class="flex flex-col gap-3 pl-3 border-l-2 border-sage-200 dark:border-sage-800">
-                    <a href="${home1Href}" class="text-lg font-medium text-gray-900 dark:text-white hover:text-sage-600 dark:hover:text-sage-400 transition-colors">Home 1 - Collection</a>
-                    <a href="${home2Href}" class="text-lg font-medium text-gray-900 dark:text-white hover:text-sage-600 dark:hover:text-sage-400 transition-colors">Home 2 - Our Story</a>
-                </div>
-            </div>
-            <a href="${aboutHref}" class="text-xl font-medium text-gray-900 dark:text-white border-b border-gray-100 dark:border-gray-800 pb-4">About</a>
-            <a href="${productsHref}" class="text-xl font-medium text-gray-900 dark:text-white border-b border-gray-100 dark:border-gray-800 pb-4">Nursery Products</a>
-            <a href="${registryHref}" class="text-xl font-medium text-gray-900 dark:text-white border-b border-gray-100 dark:border-gray-800 pb-4">Baby Registry</a>
-            <a href="${blogHref}" class="text-xl font-medium text-gray-900 dark:text-white border-b border-gray-100 dark:border-gray-800 pb-4">Blog</a>
-            <a href="${contactHref}" class="text-xl font-medium text-gray-900 dark:text-white border-b border-gray-100 dark:border-gray-800 pb-4">Contact</a>
+        <div class="flex-grow overflow-y-auto p-6 flex flex-col gap-4">
+            <a href="${home1Href}" class="text-lg font-medium text-gray-900 dark:text-white border-b border-gray-100 dark:border-gray-800 pb-3 flex items-center justify-between hover:text-sage-600 dark:hover:text-sage-400 transition-colors">
+                <span>Home 1 — Collection</span>
+                <span class="text-xs px-2 py-0.5 rounded bg-sage-50 dark:bg-sage-900/30 text-sage-600 dark:text-sage-400 font-medium">Home</span>
+            </a>
+            <a href="${home2Href}" class="text-lg font-medium text-gray-900 dark:text-white border-b border-gray-100 dark:border-gray-800 pb-3 flex items-center justify-between hover:text-sage-600 dark:hover:text-sage-400 transition-colors">
+                <span>Home 2 — Our Story</span>
+                <span class="text-xs px-2 py-0.5 rounded bg-sage-50 dark:bg-sage-900/30 text-sage-600 dark:text-sage-400 font-medium">Story</span>
+            </a>
+            <a href="${aboutHref}" class="text-lg font-medium text-gray-900 dark:text-white border-b border-gray-100 dark:border-gray-800 pb-3 hover:text-sage-600 dark:hover:text-sage-400 transition-colors">About Us</a>
+            <a href="${productsHref}" class="text-lg font-medium text-gray-900 dark:text-white border-b border-gray-100 dark:border-gray-800 pb-3 hover:text-sage-600 dark:hover:text-sage-400 transition-colors">Nursery Products</a>
+            <a href="${registryHref}" class="text-lg font-medium text-gray-900 dark:text-white border-b border-gray-100 dark:border-gray-800 pb-3 hover:text-sage-600 dark:hover:text-sage-400 transition-colors">Baby Registry</a>
+            <a href="${blogHref}" class="text-lg font-medium text-gray-900 dark:text-white border-b border-gray-100 dark:border-gray-800 pb-3 hover:text-sage-600 dark:hover:text-sage-400 transition-colors">Blog</a>
+            <a href="${contactHref}" class="text-lg font-medium text-gray-900 dark:text-white border-b border-gray-100 dark:border-gray-800 pb-3 hover:text-sage-600 dark:hover:text-sage-400 transition-colors">Contact</a>
             
-            <div class="mt-4 flex flex-col gap-6">
-                <a href="${wishlistHref}" class="relative flex items-center gap-4 text-gray-600 dark:text-gray-300 w-max">
+            <div class="mt-4 flex flex-col gap-4">
+                <a href="${wishlistHref}" class="relative flex items-center gap-4 text-gray-700 dark:text-gray-300 hover:text-sage-600 transition-colors w-max">
                     <div class="relative">
                         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path></svg>
                         <span id="mobile-wishlist-badge" class="absolute -top-1 -right-2 inline-flex items-center justify-center px-1.5 py-0.5 text-[10px] font-bold leading-none text-white bg-sage-600 rounded-full">0</span>
                     </div>
-                    <span class="text-lg">Wishlist</span>
+                    <span class="text-base font-medium">Wishlist</span>
                 </a>
-                <a href="${cartHref}" class="relative flex items-center gap-4 text-gray-600 dark:text-gray-300 w-max">
+                <a href="${cartHref}" class="relative flex items-center gap-4 text-gray-700 dark:text-gray-300 hover:text-sage-600 transition-colors w-max">
                     <div class="relative">
                         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
                         <span id="mobile-cart-badge" class="absolute -top-1 -right-2 inline-flex items-center justify-center px-1.5 py-0.5 text-[10px] font-bold leading-none text-white bg-sage-600 rounded-full">0</span>
                     </div>
-                    <span class="text-lg">Cart</span>
+                    <span class="text-base font-medium">Cart</span>
                 </a>
             </div>
         </div>
       `;
       document.body.appendChild(mobileMenu);
       
+      // Auto close on link click
+      mobileMenu.querySelectorAll('a').forEach(a => {
+          a.addEventListener('click', () => {
+              mobileMenu.classList.add('hidden');
+              mobileMenu.classList.remove('flex');
+          });
+      });
+
       // Hook up mobile theme toggle
       const mobileThemeToggle = document.getElementById('mobile-theme-toggle');
       if (mobileThemeToggle) {
           mobileThemeToggle.addEventListener('click', () => {
               document.documentElement.classList.toggle('dark');
               const newTheme = document.documentElement.classList.contains('dark') ? 'dark' : 'light';
-              localStorage.setItem('theme', newTheme);
+              try { localStorage.setItem('theme', newTheme); } catch(e) {}
               
-              // Update icons
               const isDark = newTheme === 'dark';
               const iconSvg = isDark 
                 ? `<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>`
@@ -160,7 +169,6 @@ function initMobileMenu() {
               showToast(`${isDark ? 'Dark' : 'Light'} mode enabled.`);
           });
           
-          // Initial sync of mobile theme icon
           const isDark = document.documentElement.classList.contains('dark');
           mobileThemeToggle.innerHTML = isDark 
                 ? `<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>`
@@ -174,7 +182,7 @@ function initMobileMenu() {
               const currentDir = document.documentElement.getAttribute('dir');
               const newDir = currentDir === 'rtl' ? 'ltr' : 'rtl';
               document.documentElement.setAttribute('dir', newDir);
-              localStorage.setItem('direction', newDir);
+              try { localStorage.setItem('direction', newDir); } catch(e) {}
               showToast(`RTL layout ${newDir === 'rtl' ? 'enabled' : 'disabled'}.`);
           });
       }
@@ -273,8 +281,16 @@ function initLinkToasts() {
 
 // Fade Up Animations
 function initAnimations() {
-  const elements = document.querySelectorAll('.fade-up');
+  const elements = document.querySelectorAll('.fade-up:not(.product-card)');
   
+  if (!('IntersectionObserver' in window)) {
+    elements.forEach(el => {
+      el.classList.add('visible', 'opacity-100', 'translate-y-0');
+      el.classList.remove('opacity-0', 'translate-y-4');
+    });
+    return;
+  }
+
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
@@ -283,7 +299,7 @@ function initAnimations() {
         observer.unobserve(entry.target);
       }
     });
-  }, { threshold: 0.1 });
+  }, { threshold: 0.05, rootMargin: '40px' });
 
   elements.forEach(el => {
       el.classList.add('transition-all', 'duration-700', 'opacity-0', 'translate-y-4');
@@ -307,7 +323,7 @@ function initBadges() {
     });
 
     const wishlistBtns = document.querySelectorAll('.wishlist-btn');
-    const savedWishlistItems = JSON.parse(localStorage.getItem('wishlistItems') || '[]');
+    let savedWishlistItems = []; try { savedWishlistItems = JSON.parse(localStorage.getItem('wishlistItems') || '[]'); } catch(e) { savedWishlistItems = []; }
     
     wishlistBtns.forEach(btn => {
         const productId = btn.getAttribute('data-id');
@@ -326,7 +342,7 @@ function initBadges() {
             
             let count = parseInt(localStorage.getItem('wishlistCount') || '0');
             
-            let items = JSON.parse(localStorage.getItem('wishlistItems') || '[]');
+            let items = []; try { items = JSON.parse(localStorage.getItem('wishlistItems') || '[]'); } catch(e) { items = []; }
             const productId = btn.getAttribute('data-id');
             
             // Toggle logic for wishlist
