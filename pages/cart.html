@@ -79,31 +79,34 @@
         </div>
     </nav>
 
-    <main class="flex-grow py-12 px-4 max-w-6xl mx-auto w-full fade-up">
+        <main class="flex-grow py-12 px-4 max-w-6xl mx-auto w-full">
         
         <!-- STEP 1: CART ITEMS -->
         <div id="step-cart" class="block">
             <h1 class="text-3xl font-serif mb-8 text-gray-900 dark:text-white transition-colors">Your Cart</h1>
-            <div class="flex flex-col lg:flex-row gap-10">
+            
+            <!-- Dynamic Cart Empty State (shown when cart has 0 items) -->
+            <div id="cart-empty-view" class="hidden bg-white dark:bg-gray-800 rounded-xl p-12 text-center shadow-sm border border-gray-100 dark:border-gray-700 max-w-lg mx-auto">
+                <div class="w-20 h-20 mx-auto bg-gray-100 dark:bg-gray-700/60 rounded-full flex items-center justify-center mb-6 text-gray-400 dark:text-gray-500">
+                    <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
+                </div>
+                <h2 class="text-2xl font-serif text-gray-900 dark:text-white mb-2">Your cart is empty</h2>
+                <p class="text-gray-500 dark:text-gray-400 text-sm mb-8 leading-relaxed">You have not added any nursery pieces to your cart yet.</p>
+                <a href="products.html" class="inline-block px-8 py-3.5 bg-sage-600 hover:bg-sage-700 text-white font-medium rounded-md transition-colors shadow-sm text-sm">Discover Nursery Products</a>
+            </div>
+
+            <!-- Dynamic Cart Filled View (shown when cart has items) -->
+            <div id="cart-filled-view" class="flex flex-col lg:flex-row gap-10">
                 <div class="lg:w-2/3">
                     <div class="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-sm border border-gray-100 dark:border-gray-700 transition-colors">
-                        <div id="cart-item-row" class="flex flex-col sm:flex-row gap-6 items-center border-b border-gray-200 dark:border-gray-700 pb-6 mb-6">
-                            <img src="https://images.unsplash.com/photo-1595515106969-1ce29566ff1c?auto=format&fit=crop&w=200&q=80" alt="Haven Convertible Crib" class="w-24 h-24 object-cover rounded-md bg-gray-100 dark:bg-gray-700">
-                            <div class="flex-grow text-center sm:text-left">
-                                <h3 class="text-lg font-medium text-gray-900 dark:text-white">Haven Convertible Crib</h3>
-                                <p class="text-sm text-gray-500 dark:text-gray-400">Warm White • Solid Oak</p>
-                            </div>
-                            <div class="text-right flex flex-col items-center sm:items-end gap-2">
-                                <span id="cart-item-price" class="font-medium text-gray-900 dark:text-white">₹35,000</span>
-                                <div class="flex items-center border border-gray-300 dark:border-gray-600 rounded">
-                                    <button class="px-3 py-1 text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700" onclick="updateQuantity(-1)">-</button>
-                                    <span id="cart-item-qty" class="px-3 py-1 text-gray-900 dark:text-white border-x border-gray-300 dark:border-gray-600">1</span>
-                                    <button class="px-3 py-1 text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700" onclick="updateQuantity(1)">+</button>
-                                </div>
-                                <button onclick="removeCartItem()" class="text-xs text-red-500 hover:text-red-700 mt-1 transition-colors underline">Remove</button>
-                            </div>
+                        <!-- Dynamic Cart Items Container -->
+                        <div id="cart-items-container" class="divide-y divide-gray-100 dark:divide-gray-700">
+                            <!-- Injected dynamically by renderCartPage() -->
                         </div>
-                        <a href="products.html" class="text-sage-600 dark:text-sage-400 font-medium text-sm hover:underline">← Continue Shopping</a>
+                        <div class="mt-6 pt-4 border-t border-gray-100 dark:border-gray-700 flex justify-between items-center">
+                            <a href="products.html" class="text-sage-600 dark:text-sage-400 font-medium text-sm hover:underline">← Continue Shopping</a>
+                            <button onclick="clearAllCartAndRender()" class="text-xs text-gray-500 hover:text-red-500 transition-colors">Clear Cart</button>
+                        </div>
                     </div>
                 </div>
                 <div class="lg:w-1/3">
@@ -111,17 +114,17 @@
                         <h3 class="text-xl font-medium mb-4 text-gray-900 dark:text-white">Order Summary</h3>
                         <div class="flex justify-between mb-3 text-gray-600 dark:text-gray-400 text-sm">
                             <span>Subtotal</span>
-                            <span id="cart-subtotal">₹35,000</span>
+                            <span id="cart-subtotal">₹0</span>
                         </div>
                         <div class="flex justify-between mb-4 text-gray-600 dark:text-gray-400 text-sm">
-                            <span>Shipping</span>
-                            <span>Free</span>
+                            <span>Specialty Nursery Delivery</span>
+                            <span class="text-green-600 dark:text-green-400 font-medium">Free White-Glove</span>
                         </div>
                         <div class="border-t border-gray-200 dark:border-gray-700 pt-4 flex justify-between mb-6 text-gray-900 dark:text-white">
                             <span class="font-medium">Total</span>
-                            <span id="cart-total" class="font-bold text-lg">₹35,000</span>
+                            <span id="cart-total" class="font-bold text-lg">₹0</span>
                         </div>
-                        <button id="btn-proceed" class="w-full py-3 bg-gray-900 dark:bg-sage-600 text-white font-medium rounded hover:bg-gray-800 dark:hover:bg-sage-700 transition-colors">Checkout details</button>
+                        <button id="btn-proceed" class="w-full py-3 bg-gray-900 dark:bg-sage-600 text-white font-medium rounded hover:bg-gray-800 dark:hover:bg-sage-700 transition-colors">Proceed to Checkout</button>
                     </div>
                 </div>
             </div>
@@ -210,7 +213,7 @@
                             </div>
                             
                             <div class="mt-8 pt-6 border-t border-gray-200 dark:border-gray-700">
-                                <button type="submit" id="btn-pay-text" class="w-full py-4 bg-gray-900 dark:bg-sage-600 text-white font-medium rounded hover:bg-gray-800 dark:hover:bg-sage-700 transition-colors shadow-sm">Confirm Order & Pay ₹35,000</button>
+                                <button type="submit" id="btn-pay-text" class="w-full py-4 bg-gray-900 dark:bg-sage-600 text-white font-medium rounded hover:bg-gray-800 dark:hover:bg-sage-700 transition-colors shadow-sm">Confirm Order & Pay ₹0</button>
                             </div>
                         </div>
                     </div>
@@ -292,59 +295,103 @@
         </div>
     </footer>
 
-    <!-- Scripts -->
+        <!-- Scripts -->
     <script src="../js/main.js"></script>
     <script>
-        function updateQuantity(change) {
-            const qtySpan = document.getElementById('cart-item-qty');
-            const priceSpan = document.getElementById('cart-item-price');
+        let currentSubtotal = 0;
+
+        function renderCartPage() {
+            const emptyView = document.getElementById('cart-empty-view');
+            const filledView = document.getElementById('cart-filled-view');
+            const container = document.getElementById('cart-items-container');
             const subtotalSpan = document.getElementById('cart-subtotal');
             const totalSpan = document.getElementById('cart-total');
             const btnPay = document.getElementById('btn-pay-text');
 
-            let currentQty = parseInt(qtySpan.textContent);
-            let newQty = currentQty + change;
-            if (newQty < 1) newQty = 1;
+            const cartItems = window.getSavedCart ? window.getSavedCart() : [];
 
-            qtySpan.textContent = newQty;
+            if (cartItems.length === 0) {
+                emptyView.classList.remove('hidden');
+                filledView.classList.add('hidden');
+                subtotalSpan.textContent = '₹0';
+                totalSpan.textContent = '₹0';
+                if (btnPay) btnPay.textContent = 'Confirm Order & Pay ₹0';
+                return;
+            }
 
-            const unitPrice = 35000;
-            const newTotal = unitPrice * newQty;
-            const formattedTotal = '₹' + newTotal.toLocaleString('en-IN');
+            emptyView.classList.add('hidden');
+            filledView.classList.remove('hidden');
 
-            priceSpan.textContent = formattedTotal;
+            const catalog = window.productsList || [];
+            let subtotal = 0;
+
+            container.innerHTML = cartItems.map(item => {
+                const product = catalog.find(p => p.id === item.id) || {
+                    id: item.id,
+                    name: 'Nursery Furniture',
+                    category: 'Nursery',
+                    variant: 'Handcrafted',
+                    price: 25000,
+                    image: 'https://i.pinimg.com/1200x/96/18/18/961818b0e00fdf7140885a8682a7ce93.jpg'
+                };
+                const qty = parseInt(item.qty, 10) || 1;
+                const itemTotal = product.price * qty;
+                subtotal += itemTotal;
+
+                return `
+                    <div class="flex flex-col sm:flex-row gap-6 items-center py-6 first:pt-0 last:pb-0" id="cart-row-${product.id}">
+                        <img src="${product.image}" alt="${product.name}" class="w-24 h-24 object-cover rounded-md bg-gray-100 dark:bg-gray-700 shrink-0">
+                        <div class="flex-grow text-center sm:text-left">
+                            <h3 class="text-lg font-medium text-gray-900 dark:text-white mb-1">${product.name}</h3>
+                            <p class="text-sm text-gray-500 dark:text-gray-400 mb-1">${product.variant || product.category}</p>
+                            <span class="text-xs text-gray-400 dark:text-gray-500">Unit: ₹${product.price.toLocaleString('en-IN')}</span>
+                        </div>
+                        <div class="text-right flex flex-col items-center sm:items-end gap-2">
+                            <span class="font-medium text-gray-900 dark:text-white text-base">₹${itemTotal.toLocaleString('en-IN')}</span>
+                            <div class="flex items-center border border-gray-300 dark:border-gray-600 rounded bg-white dark:bg-gray-700">
+                                <button type="button" class="px-3 py-1 text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-600 transition-colors" onclick="handleQtyChange('${product.id}', -1)" title="Decrease">-</button>
+                                <span class="px-3 py-1 text-gray-900 dark:text-white border-x border-gray-300 dark:border-gray-600 text-sm font-medium">${qty}</span>
+                                <button type="button" class="px-3 py-1 text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-600 transition-colors" onclick="handleQtyChange('${product.id}', 1)" title="Increase">+</button>
+                            </div>
+                            <button type="button" onclick="handleRemoveItem('${product.id}')" class="text-xs text-red-500 hover:text-red-700 transition-colors underline mt-1">Remove</button>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+
+            currentSubtotal = subtotal;
+            const formattedTotal = '₹' + subtotal.toLocaleString('en-IN');
             subtotalSpan.textContent = formattedTotal;
             totalSpan.textContent = formattedTotal;
-            if(btnPay) btnPay.textContent = 'Confirm Order & Pay ' + formattedTotal;
+            if (btnPay) btnPay.textContent = 'Confirm Order & Pay ' + formattedTotal;
         }
 
-        document.addEventListener('DOMContentLoaded', () => {
-            const stepCart = document.getElementById('step-cart');
-            const stepPayment = document.getElementById('step-payment');
-            
-            document.getElementById('btn-proceed').addEventListener('click', () => {
-                stepCart.classList.add('hidden');
-                stepPayment.classList.remove('hidden');
-                stepPayment.classList.remove('opacity-0', 'translate-y-4');
-                stepPayment.classList.add('opacity-100', 'translate-y-0');
-            });
-            
-            document.getElementById('btn-back-cart').addEventListener('click', () => {
-                stepPayment.classList.add('hidden');
-                stepCart.classList.remove('hidden');
-            });
-        });
+        function handleQtyChange(id, delta) {
+            if (window.updateCartItemQty) window.updateCartItemQty(id, delta);
+            renderCartPage();
+        }
+
+        function handleRemoveItem(id) {
+            if (window.removeFromCart) window.removeFromCart(id);
+            renderCartPage();
+        }
+
+        function clearAllCartAndRender() {
+            if (window.clearAllCart) window.clearAllCart();
+            renderCartPage();
+        }
 
         function processPayment() {
             const stepPayment = document.getElementById('step-payment');
             const stepSuccess = document.getElementById('step-success');
 
-            const method = document.querySelector('input[name="payment"]:checked').value;
+            const checkedInput = document.querySelector('input[name="payment"]:checked');
+            const method = checkedInput ? checkedInput.value : 'card';
             let message = 'Processing payment...';
-            if(method === 'cod') message = 'Confirming Cash on Delivery...';
-            if(method === 'qr') message = 'Awaiting QR confirmation...';
+            if (method === 'cod') message = 'Confirming Cash on Delivery...';
+            if (method === 'qr') message = 'Awaiting QR payment confirmation...';
 
-            if(window.showToast) window.showToast(message);
+            if (window.showToast) window.showToast(message);
             
             setTimeout(() => {
                 stepPayment.classList.add('hidden');
@@ -352,28 +399,40 @@
                 stepSuccess.classList.remove('opacity-0', 'translate-y-4');
                 stepSuccess.classList.add('opacity-100', 'translate-y-0');
                 
-                localStorage.setItem('cartCount', '0');
-                if (typeof updateBadges === 'function') updateBadges();
-            }, 1500);
+                if (window.saveCartItems) window.saveCartItems([]);
+                if (window.updateBadges) window.updateBadges();
+            }, 1200);
         }
 
-        function removeCartItem() {
-            const row = document.getElementById('cart-item-row');
-            if (row) row.remove();
-            
-            document.getElementById('cart-subtotal').textContent = '₹0';
-            document.getElementById('cart-total').textContent = '₹0';
-            
+        document.addEventListener('DOMContentLoaded', () => {
+            const stepCart = document.getElementById('step-cart');
+            const stepPayment = document.getElementById('step-payment');
             const btnProceed = document.getElementById('btn-proceed');
+            const btnBack = document.getElementById('btn-back-cart');
+            
             if (btnProceed) {
-                btnProceed.disabled = true;
-                btnProceed.classList.add('opacity-50', 'cursor-not-allowed');
-                btnProceed.textContent = 'Cart is empty';
+                btnProceed.addEventListener('click', () => {
+                    stepCart.classList.add('hidden');
+                    stepPayment.classList.remove('hidden');
+                    stepPayment.classList.remove('opacity-0', 'translate-y-4');
+                    stepPayment.classList.add('opacity-100', 'translate-y-0');
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                });
             }
             
-            localStorage.setItem('cartCount', '0');
-            if (typeof updateBadges === 'function') updateBadges();
-            if (window.showToast) window.showToast('Item removed from cart');
+            if (btnBack) {
+                btnBack.addEventListener('click', () => {
+                    stepPayment.classList.add('hidden');
+                    stepCart.classList.remove('hidden');
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                });
+            }
+
+            renderCartPage();
+        });
+
+        if (document.readyState !== 'loading') {
+            renderCartPage();
         }
     </script>
 </body>

@@ -307,68 +307,232 @@ function initAnimations() {
   });
 }
 
-// Badges Logic
+// =========================================================================
+// Central Products Master Catalog
+// =========================================================================
+const productsList = [
+    { id: 'prod-01', name: 'Haven Convertible Crib', category: 'Cribs & Cots', price: 35000, image: 'https://i.pinimg.com/1200x/96/18/18/961818b0e00fdf7140885a8682a7ce93.jpg', variant: 'Warm White • Solid Oak' },
+    { id: 'prod-02', name: 'Willow 3-in-1 Crib', category: 'Cribs & Cots', price: 28000, image: 'https://i.pinimg.com/1200x/d7/27/64/d7276431482de4de5a81a06d5539705c.jpg', variant: 'Soft Sage • Sustainable Pine' },
+    { id: 'prod-03', name: 'Meadow Cot', category: 'Cribs & Cots', price: 22000, image: 'https://i.pinimg.com/736x/7d/3c/9d/7d3c9d3fe387f6092a0e916cdd467cc3.jpg', variant: 'Natural Wood • Birch' },
+    { id: 'prod-04', name: 'Luna Mini Crib', category: 'Cribs & Cots', price: 18000, image: 'https://i.pinimg.com/736x/9c/fe/59/9cfe597ae8f014d068d441a14aa84023.jpg', variant: 'Ivory • Solid Beech' },
+    { id: 'prod-05', name: 'Haven 6-Drawer Dresser', category: 'Dressers', price: 45000, image: 'https://i.pinimg.com/1200x/30/e3/cc/30e3ccd8185377de379cd9442c8b71be.jpg', variant: 'Warm White • Solid Oak' },
+    { id: 'prod-06', name: 'Willow Changing Dresser', category: 'Dressers', price: 32000, image: 'https://i.pinimg.com/736x/8b/d4/b2/8bd4b20ab76b007402e2fa18f29cfd1b.jpg', variant: 'Soft Sage • Pine Changing Topper' },
+    { id: 'prod-07', name: 'Oakline Storage Dresser', category: 'Dressers', price: 38000, image: 'https://i.pinimg.com/1200x/3e/d4/64/3ed4649513cc3be22f158dd81bb9d5eb.jpg', variant: 'Natural Oak • Oak Veneer' },
+    { id: 'prod-08', name: 'Cloud Nursery Rocker', category: 'Rocking Chairs', price: 25000, image: 'https://i.pinimg.com/236x/da/de/c5/dadec541ceb91305eb7f78d8ff29bbef.jpg', variant: 'Oatmeal • Linen & Solid Wood' },
+    { id: 'prod-09', name: 'Little Haven Toy Cabinet', category: 'Storage', price: 15000, image: 'https://i.pinimg.com/736x/53/7d/38/537d38f12a7845155d5fb2453382acde.jpg', variant: 'Soft Sage • Child-Safe Pine' },
+    { id: 'prod-10', name: 'Organic Cotton Crib Sheet', category: 'Accessories', price: 3500, image: 'https://i.pinimg.com/1200x/33/f3/aa/33f3aa6b4d8c5948cc5beb16a4106334.jpg', variant: 'Sand • 100% Organic Cotton' }
+];
+
+// =========================================================================
+// Wishlist Logic & Storage
+// =========================================================================
+function getSavedWishlist() {
+    let items = [];
+    try {
+        const a = JSON.parse(localStorage.getItem('wishlistItems') || '[]');
+        const b = JSON.parse(localStorage.getItem('wishlist') || '[]');
+        const set = new Set();
+        if (Array.isArray(a)) a.forEach(x => set.add(String(typeof x === 'object' && x ? x.id : x)));
+        if (Array.isArray(b)) b.forEach(x => set.add(String(typeof x === 'object' && x ? x.id : x)));
+        items = Array.from(set).filter(Boolean);
+    } catch(e) {
+        items = [];
+    }
+    return items;
+}
+
+function saveWishlistItems(items) {
+    try {
+        localStorage.setItem('wishlistItems', JSON.stringify(items));
+        localStorage.setItem('wishlist', JSON.stringify(items));
+        localStorage.setItem('wishlistCount', String(items.length));
+    } catch(e) {}
+}
+
+// =========================================================================
+// Cart Logic & Storage
+// =========================================================================
+function getSavedCart() {
+    try {
+        const raw = localStorage.getItem('cartItems');
+        if (!raw) return [];
+        const parsed = JSON.parse(raw);
+        if (Array.isArray(parsed)) {
+            return parsed.filter(item => item && item.id);
+        }
+        return [];
+    } catch (e) {
+        return [];
+    }
+}
+
+function saveCartItems(items) {
+    try {
+        const valid = Array.isArray(items) ? items.filter(item => item && item.id) : [];
+        localStorage.setItem('cartItems', JSON.stringify(valid));
+        const totalQty = valid.reduce((sum, item) => sum + (parseInt(item.qty, 10) || 1), 0);
+        localStorage.setItem('cartCount', String(totalQty));
+    } catch(e) {}
+}
+
+function addToCart(productId, qty = 1) {
+    if (!productId) return;
+    const items = getSavedCart();
+    const existing = items.find(i => i.id === productId);
+    const addQty = parseInt(qty, 10) || 1;
+    if (existing) {
+        existing.qty = (parseInt(existing.qty, 10) || 1) + addQty;
+    } else {
+        items.push({ id: productId, qty: addQty });
+    }
+    saveCartItems(items);
+    updateBadges();
+
+    const product = productsList.find(p => p.id === productId);
+    const title = product ? product.name : 'Item';
+    if (window.showToast) window.showToast(`${title} added to Cart`);
+}
+
+function removeFromCart(productId) {
+    if (!productId) return;
+    let items = getSavedCart().filter(i => i.id !== productId);
+    saveCartItems(items);
+    updateBadges();
+    if (window.showToast) window.showToast('Item removed from cart');
+}
+
+function updateCartItemQty(productId, delta) {
+    if (!productId) return;
+    let items = getSavedCart();
+    const item = items.find(i => i.id === productId);
+    if (item) {
+        let current = parseInt(item.qty, 10) || 1;
+        let newQty = current + delta;
+        if (newQty <= 0) {
+            removeFromCart(productId);
+            return;
+        }
+        item.qty = newQty;
+        saveCartItems(items);
+        updateBadges();
+    }
+}
+
+function clearAllCart() {
+    saveCartItems([]);
+    updateBadges();
+    if (window.showToast) window.showToast('Cart cleared');
+}
+
+// =========================================================================
+// Badges Sync (Header & Mobile)
+// =========================================================================
+function updateBadges() {
+    const cartItems = getSavedCart();
+    const cartCount = cartItems.reduce((sum, i) => sum + (parseInt(i.qty, 10) || 1), 0);
+    localStorage.setItem('cartCount', String(cartCount));
+
+    const wishlistItems = getSavedWishlist();
+    const wishCount = String(wishlistItems.length);
+
+    const cartBadges = document.querySelectorAll('#nav-cart-badge, #mobile-cart-badge');
+    const wishBadges = document.querySelectorAll('#nav-wishlist-badge, #mobile-wishlist-badge');
+
+    cartBadges.forEach(b => b.textContent = String(cartCount));
+    wishBadges.forEach(b => b.textContent = wishCount);
+}
+
+// =========================================================================
+// Init Badges & Button Bindings
+// =========================================================================
 function initBadges() {
     updateBadges();
 
+    // Bind Add-to-Cart Buttons across any page
     const addToCartBtns = document.querySelectorAll('.add-to-cart-btn');
     addToCartBtns.forEach(btn => {
+        if (btn.dataset.cartBound === 'true') return;
+        btn.dataset.cartBound = 'true';
+        
         btn.addEventListener('click', (e) => {
-            e.preventDefault();
-            let count = parseInt(localStorage.getItem('cartCount') || '0');
-            localStorage.setItem('cartCount', count + 1);
-            updateBadges();
-            showToast('Added to Cart');
+            const pId = btn.getAttribute('data-id');
+            if (pId) {
+                e.preventDefault();
+                e.stopPropagation();
+                addToCart(pId, 1);
+                
+                // Visual feedback on button
+                const origText = btn.textContent;
+                btn.textContent = 'Added ✓';
+                btn.classList.add('bg-sage-800');
+                setTimeout(() => {
+                    btn.textContent = origText;
+                    btn.classList.remove('bg-sage-800');
+                }, 1200);
+            }
         });
     });
 
+    // Bind Wishlist Buttons
     const wishlistBtns = document.querySelectorAll('.wishlist-btn');
-    let savedWishlistItems = []; try { savedWishlistItems = JSON.parse(localStorage.getItem('wishlistItems') || '[]'); } catch(e) { savedWishlistItems = []; }
+    const savedWishlistItems = getSavedWishlist();
     
     wishlistBtns.forEach(btn => {
         const productId = btn.getAttribute('data-id');
+        const icon = btn.querySelector('svg');
+
+        // Initial icon state
         if (productId && savedWishlistItems.includes(productId)) {
             btn.classList.add('active-wish');
-            const icon = btn.querySelector('svg');
             if (icon) {
                 icon.setAttribute('fill', 'currentColor');
                 icon.classList.add('text-red-500');
+                icon.classList.remove('text-gray-400');
+            }
+        } else {
+            btn.classList.remove('active-wish');
+            if (icon) {
+                icon.setAttribute('fill', 'none');
+                icon.classList.remove('text-red-500');
+                icon.classList.add('text-gray-400');
             }
         }
         
+        // Prevent duplicate listener binding
+        if (btn.dataset.wishlistBound === 'true') return;
+        btn.dataset.wishlistBound = 'true';
+        
         btn.addEventListener('click', (e) => {
             e.preventDefault();
-            const icon = btn.querySelector('svg');
+            e.stopPropagation();
+            const btnIcon = btn.querySelector('svg');
+            const pId = btn.getAttribute('data-id');
+            if (!pId) return;
             
-            let count = parseInt(localStorage.getItem('wishlistCount') || '0');
+            let currentItems = getSavedWishlist();
+            const isCurrentlyWishlisted = currentItems.includes(pId);
             
-            let items = []; try { items = JSON.parse(localStorage.getItem('wishlistItems') || '[]'); } catch(e) { items = []; }
-            const productId = btn.getAttribute('data-id');
-            
-            // Toggle logic for wishlist
-            if(btn.classList.contains('active-wish')) {
+            if (isCurrentlyWishlisted) {
+                // Remove
+                currentItems = currentItems.filter(id => id !== pId);
                 btn.classList.remove('active-wish');
-                if(icon) {
-                    icon.setAttribute('fill', 'none');
-                    icon.classList.remove('text-red-500');
+                if (btnIcon) {
+                    btnIcon.setAttribute('fill', 'none');
+                    btnIcon.classList.remove('text-red-500');
+                    btnIcon.classList.add('text-gray-400');
                 }
-                localStorage.setItem('wishlistCount', Math.max(0, count - 1));
-                if (productId) {
-                    items = items.filter(id => id !== productId);
-                    localStorage.setItem('wishlistItems', JSON.stringify(items));
-                }
+                saveWishlistItems(currentItems);
                 showToast('Removed from Wishlist');
             } else {
+                // Add
+                currentItems.push(pId);
                 btn.classList.add('active-wish');
-                if(icon) {
-                    icon.setAttribute('fill', 'currentColor');
-                    icon.classList.add('text-red-500');
+                if (btnIcon) {
+                    btnIcon.setAttribute('fill', 'currentColor');
+                    btnIcon.classList.add('text-red-500');
+                    btnIcon.classList.remove('text-gray-400');
                 }
-                localStorage.setItem('wishlistCount', count + 1);
-                if (productId && !items.includes(productId)) {
-                    items.push(productId);
-                    localStorage.setItem('wishlistItems', JSON.stringify(items));
-                }
+                saveWishlistItems(currentItems);
                 showToast('Added to Wishlist');
             }
             updateBadges();
@@ -376,18 +540,17 @@ function initBadges() {
     });
 }
 
-function updateBadges() {
-    const cartCount = localStorage.getItem('cartCount') || '0';
-    const wishlistCount = localStorage.getItem('wishlistCount') || '0';
-
-    const cartBadges = document.querySelectorAll('#nav-cart-badge, #mobile-cart-badge');
-    const wishBadges = document.querySelectorAll('#nav-wishlist-badge, #mobile-wishlist-badge');
-
-    cartBadges.forEach(b => b.textContent = cartCount);
-    wishBadges.forEach(b => b.textContent = wishlistCount);
-}
-
-window.showToast = showToast;
-
+// Global Window Exports
+window.productsList = productsList;
+window.getSavedWishlist = getSavedWishlist;
+window.saveWishlistItems = saveWishlistItems;
+window.getSavedCart = getSavedCart;
+window.saveCartItems = saveCartItems;
+window.addToCart = addToCart;
+window.removeFromCart = removeFromCart;
+window.updateCartItemQty = updateCartItemQty;
+window.clearAllCart = clearAllCart;
+window.updateBadges = updateBadges;
 window.initBadges = initBadges;
+window.showToast = showToast;
 window.initAnimations = initAnimations;

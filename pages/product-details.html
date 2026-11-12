@@ -317,6 +317,22 @@
             }
 
             document.getElementById('detail-main-img').src = product.image;
+            const detailCartBtn = document.querySelector('.add-to-cart-btn');
+            if (detailCartBtn) {
+                detailCartBtn.setAttribute('data-id', product.id);
+                detailCartBtn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    if (window.addToCart) window.addToCart(product.id, 1);
+                    setTimeout(() => {
+                        window.location.href = 'cart.html';
+                    }, 400);
+                });
+            }
+            const detailWishBtn = document.getElementById('detail-wishlist-btn');
+            if (detailWishBtn) {
+                detailWishBtn.setAttribute('data-id', product.id);
+                if (window.initBadges) window.initBadges();
+            }
 
             const mainContent = document.getElementById('main-product-content');
             mainContent.classList.remove('invisible', 'opacity-0');
