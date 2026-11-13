@@ -83,7 +83,7 @@
         <a href="products.html" class="px-6 py-3 bg-gray-900 dark:bg-sage-600 text-white rounded font-medium hover:bg-gray-800 dark:hover:bg-sage-700 transition-colors">Back to Products</a>
     </div>
 
-    <main id="main-product-content" class="flex-grow pt-10 pb-20 fade-up invisible opacity-0 transition-opacity duration-500">
+    <main id="main-product-content" class="flex-grow pt-10 pb-20">
         <div class="max-w-7xl mx-auto px-4">
             <div class="flex flex-col lg:flex-row gap-12 lg:gap-20">
                 <!-- Left: Images -->
@@ -273,71 +273,365 @@
         </div>
     </footer>
 
-    <!-- Scripts -->
+        <!-- Scripts -->
     <script src="../js/main.js"></script>
     <script>
-        const productsList = [
-            { id: 'prod-01', name: 'Haven Convertible Crib', category: 'Cribs & Cots', price: 35000, rating: 4.9, reviews: 124, image: 'https://i.pinimg.com/1200x/96/18/18/961818b0e00fdf7140885a8682a7ce93.jpg', description: 'A timeless convertible crib designed to grow with your baby. Built with solid oak.', material: 'Solid Oak Wood', color: 'Warm White', dimensions: '135cm x 75cm x 90cm', stock: true },
-            { id: 'prod-02', name: 'Willow 3-in-1 Crib', category: 'Cribs & Cots', price: 28000, rating: 4.8, reviews: 89, image: 'https://i.pinimg.com/1200x/d7/27/64/d7276431482de4de5a81a06d5539705c.jpg', description: 'Beautifully crafted crib with a soft sage finish.', material: 'Sustainable Pine', color: 'Soft Sage', dimensions: '130cm x 70cm x 85cm', stock: true },
-            { id: 'prod-03', name: 'Meadow Cot', category: 'Cribs & Cots', price: 22000, rating: 4.7, reviews: 56, image: 'https://i.pinimg.com/736x/7d/3c/9d/7d3c9d3fe387f6092a0e916cdd467cc3.jpg', description: 'A minimalist and elegant cot for modern nurseries.', material: 'Birch Wood', color: 'Natural Wood', dimensions: '120cm x 60cm x 80cm', stock: true },
-            { id: 'prod-04', name: 'Luna Mini Crib', category: 'Cribs & Cots', price: 18000, rating: 4.6, reviews: 42, image: 'https://i.pinimg.com/736x/9c/fe/59/9cfe597ae8f014d068d441a14aa84023.jpg', description: 'Perfect space-saving crib for smaller nursery rooms.', material: 'Solid Beech', color: 'Ivory', dimensions: '100cm x 55cm x 80cm', stock: false },
-            { id: 'prod-05', name: 'Haven 6-Drawer Dresser', category: 'Dressers', price: 45000, rating: 4.9, reviews: 210, image: 'https://i.pinimg.com/1200x/30/e3/cc/30e3ccd8185377de379cd9442c8b71be.jpg', description: 'Spacious 6-drawer dresser with soft-close mechanisms.', material: 'Solid Oak Wood', color: 'Warm White', dimensions: '140cm x 50cm x 85cm', stock: true },
-            { id: 'prod-06', name: 'Willow Changing Dresser', category: 'Changing Tables', price: 32000, rating: 4.8, reviews: 115, image: 'https://i.pinimg.com/736x/8b/d4/b2/8bd4b20ab76b007402e2fa18f29cfd1b.jpg', description: 'A dresser that doubles as a changing table with a removable topper.', material: 'Sustainable Pine', color: 'Soft Sage', dimensions: '100cm x 50cm x 90cm', stock: true },
-            { id: 'prod-07', name: 'Oakline Storage Dresser', category: 'Dressers', price: 38000, rating: 4.7, reviews: 75, image: 'https://i.pinimg.com/1200x/3e/d4/64/3ed4649513cc3be22f158dd81bb9d5eb.jpg', description: 'Contemporary dresser with generous storage.', material: 'Oak Veneer', color: 'Natural Oak', dimensions: '120cm x 45cm x 85cm', stock: true },
-            { id: 'prod-08', name: 'Cloud Nursery Rocker', category: 'Rocking Chairs', price: 25000, rating: 5.0, reviews: 310, image: 'https://i.pinimg.com/236x/da/de/c5/dadec541ceb91305eb7f78d8ff29bbef.jpg', description: 'Ultra-comfortable upholstered rocking chair for late-night feeds.', material: 'Linen Blend & Wood', color: 'Oatmeal', dimensions: '80cm x 90cm x 100cm', stock: true },
-            { id: 'prod-09', name: 'Little Haven Toy Cabinet', category: 'Storage', price: 15000, rating: 4.9, reviews: 150, image: 'https://i.pinimg.com/736x/53/7d/38/537d38f12a7845155d5fb2453382acde.jpg', description: 'Low-height storage cabinet perfect for toddler accessibility.', material: 'MDF & Pine', color: 'Soft Sage', dimensions: '120cm x 40cm x 60cm', stock: true },
-            { id: 'prod-10', name: 'Organic Cotton Crib Sheet', category: 'Accessories', price: 3500, rating: 5.0, reviews: 450, image: 'https://i.pinimg.com/1200x/33/f3/aa/33f3aa6b4d8c5948cc5beb16a4106334.jpg', description: 'Breathable, soft, and completely organic fitted sheet.', material: '100% Organic Cotton', color: 'Sand', dimensions: 'Standard Crib', stock: true }
-        ];
+        const localProductsList = [
+    {
+        "id": "prod-01",
+        "name": "Haven Convertible Crib",
+        "category": "Cribs & Cots",
+        "price": 35000,
+        "image": "https://i.pinimg.com/1200x/96/18/18/961818b0e00fdf7140885a8682a7ce93.jpg",
+        "variant": "Warm White • Solid Oak",
+        "material": "FSC-Certified Solid Oak",
+        "dimensions": "135cm x 75cm x 90cm",
+        "description": "A timeless 3-in-1 convertible crib designed to grow with your baby from infancy through toddlerhood.",
+        "stock": true,
+        "rating": 4.9,
+        "reviews": 124
+    },
+    {
+        "id": "prod-02",
+        "name": "Willow 3-in-1 Crib",
+        "category": "Cribs & Cots",
+        "price": 28000,
+        "image": "https://i.pinimg.com/1200x/d7/27/64/d7276431482de4de5a81a06d5539705c.jpg",
+        "variant": "Soft Sage • Sustainable Pine",
+        "material": "Sustainable New Zealand Pine",
+        "dimensions": "130cm x 70cm x 85cm",
+        "description": "Beautifully crafted crib with a soft sage finish and organic curved spindles for serene nursery sleep.",
+        "stock": true,
+        "rating": 4.8,
+        "reviews": 89
+    },
+    {
+        "id": "prod-03",
+        "name": "Meadow Cot",
+        "category": "Cribs & Cots",
+        "price": 22000,
+        "image": "https://i.pinimg.com/736x/7d/3c/9d/7d3c9d3fe387f6092a0e916cdd467cc3.jpg",
+        "variant": "Natural Wood • Birch",
+        "material": "Solid European Birch",
+        "dimensions": "120cm x 60cm x 80cm",
+        "description": "Minimalist and elegant cot for modern compact nurseries, featuring 3 adjustable mattress heights.",
+        "stock": true,
+        "rating": 4.7,
+        "reviews": 56
+    },
+    {
+        "id": "prod-04",
+        "name": "Luna Mini Crib",
+        "category": "Cribs & Cots",
+        "price": 18000,
+        "image": "https://i.pinimg.com/736x/9c/fe/59/9cfe597ae8f014d068d441a14aa84023.jpg",
+        "variant": "Ivory • Solid Beech",
+        "material": "Solid Beech Hardwood",
+        "dimensions": "100cm x 55cm x 80cm",
+        "description": "Perfect space-saving crib for smaller nursery rooms or bedside co-sleeping with rolling caster wheels.",
+        "stock": true,
+        "rating": 4.6,
+        "reviews": 42
+    },
+    {
+        "id": "prod-05",
+        "name": "Haven 6-Drawer Dresser",
+        "category": "Dressers & Changers",
+        "price": 45000,
+        "image": "https://i.pinimg.com/1200x/30/e3/cc/30e3ccd8185377de379cd9442c8b71be.jpg",
+        "variant": "Warm White • Solid Oak",
+        "material": "Solid Oak & Oak Veneer",
+        "dimensions": "140cm x 50cm x 85cm",
+        "description": "Spacious 6-drawer dresser with soft-close whisper glide mechanisms and anti-tip wall anchor kit.",
+        "stock": true,
+        "rating": 4.9,
+        "reviews": 210
+    },
+    {
+        "id": "prod-06",
+        "name": "Willow Changing Dresser",
+        "category": "Dressers & Changers",
+        "price": 32000,
+        "image": "https://i.pinimg.com/736x/8b/d4/b2/8bd4b20ab76b007402e2fa18f29cfd1b.jpg",
+        "variant": "Soft Sage • Pine Changing Topper",
+        "material": "Sustainable Pine & Waterborne Finish",
+        "dimensions": "100cm x 50cm x 90cm",
+        "description": "Dual-purpose dresser that doubles as a changing table with a removable safety topper tray.",
+        "stock": true,
+        "rating": 4.8,
+        "reviews": 115
+    },
+    {
+        "id": "prod-07",
+        "name": "Oakline Storage Dresser",
+        "category": "Dressers & Changers",
+        "price": 38000,
+        "image": "https://i.pinimg.com/1200x/3e/d4/64/3ed4649513cc3be22f158dd81bb9d5eb.jpg",
+        "variant": "Natural Oak • Oak Veneer",
+        "material": "Natural American Oak",
+        "dimensions": "120cm x 45cm x 85cm",
+        "description": "Contemporary dresser with 4 generous storage drawers and recessed minimalist handle grooves.",
+        "stock": true,
+        "rating": 4.7,
+        "reviews": 75
+    },
+    {
+        "id": "prod-08",
+        "name": "Cloud Nursery Rocker",
+        "category": "Rocking Chairs",
+        "price": 25000,
+        "image": "https://i.pinimg.com/236x/da/de/c5/dadec541ceb91305eb7f78d8ff29bbef.jpg",
+        "variant": "Oatmeal • Linen & Solid Wood",
+        "material": "Linen Blend & Solid Birch Base",
+        "dimensions": "80cm x 90cm x 100cm",
+        "description": "Ultra-comfortable upholstered rocking chair with high ergonomic lumbar support for late-night feeds.",
+        "stock": true,
+        "rating": 5,
+        "reviews": 310
+    },
+    {
+        "id": "prod-09",
+        "name": "Little Haven Toy Cabinet",
+        "category": "Nursery Storage",
+        "price": 15000,
+        "image": "https://i.pinimg.com/736x/53/7d/38/537d38f12a7845155d5fb2453382acde.jpg",
+        "variant": "Soft Sage • Child-Safe Pine",
+        "material": "Child-Safe Pine & Non-Toxic MDF",
+        "dimensions": "120cm x 40cm x 60cm",
+        "description": "Low-height storage cabinet perfect for toddler accessibility, Montessori organization, and toy storage.",
+        "stock": true,
+        "rating": 4.9,
+        "reviews": 150
+    },
+    {
+        "id": "prod-10",
+        "name": "Organic Cotton Crib Sheet",
+        "category": "Decor & Bedding",
+        "price": 3500,
+        "image": "https://i.pinimg.com/1200x/33/f3/aa/33f3aa6b4d8c5948cc5beb16a4106334.jpg",
+        "variant": "Sand • 100% Organic Cotton",
+        "material": "100% GOTS Organic Cotton",
+        "dimensions": "140cm x 70cm x 15cm",
+        "description": "Breathable, ultra-soft, completely organic fitted sheet with deep 360-degree elastic hem.",
+        "stock": true,
+        "rating": 5,
+        "reviews": 450
+    },
+    {
+        "id": "prod-11",
+        "name": "Astrid Oval Convertible Crib",
+        "category": "Cribs & Cots",
+        "price": 39000,
+        "image": "https://images.unsplash.com/photo-1544816155-12df9643f363?auto=format&fit=crop&w=800&q=80",
+        "variant": "Natural Ash • Curved Oval Spindles",
+        "material": "FSC-Certified Solid European Ash",
+        "dimensions": "138cm x 78cm x 88cm",
+        "description": "Statement oval-shaped crib with 360-degree airflow spindles that converts from bassinet to full cot and daybed.",
+        "stock": true,
+        "rating": 4.9,
+        "reviews": 84
+    },
+    {
+        "id": "prod-12",
+        "name": "Clara 3-Drawer Compact Changer",
+        "category": "Dressers & Changers",
+        "price": 26000,
+        "image": "https://images.unsplash.com/photo-1595428774223-ef52624120d2?auto=format&fit=crop&w=800&q=80",
+        "variant": "Warm Ivory • Removable Topper",
+        "material": "Solid Wood & Child-Safe Waterborne Finish",
+        "dimensions": "88cm x 50cm x 92cm",
+        "description": "Space-conscious 3-drawer changing chest designed for compact nurseries with safety railing topper included.",
+        "stock": true,
+        "rating": 4.8,
+        "reviews": 67
+    },
+    {
+        "id": "prod-13",
+        "name": "Serene Power Glider Recliner",
+        "category": "Rocking Chairs",
+        "price": 34000,
+        "image": "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?auto=format&fit=crop&w=800&q=80",
+        "variant": "Oatmeal Bouclé • Whisper Power Recline",
+        "material": "Stain-Resistant Bouclé & Steel Mechanism",
+        "dimensions": "85cm x 92cm x 102cm",
+        "description": "Electric whisper-silent power recliner with built-in USB charging port, smooth swivel, and gentle gliding motion.",
+        "stock": true,
+        "rating": 4.9,
+        "reviews": 142
+    },
+    {
+        "id": "prod-14",
+        "name": "Haven Ergonomic Swivel Glider",
+        "category": "Rocking Chairs",
+        "price": 29000,
+        "image": "https://images.unsplash.com/photo-1567538096630-e0c55bd6374c?auto=format&fit=crop&w=800&q=80",
+        "variant": "Soft Sage Velvet • 360 Swivel",
+        "material": "Performance Velvet & Solid Wood Base",
+        "dimensions": "82cm x 88cm x 96cm",
+        "description": "Plush velvet swivel nursing chair with ergonomic headrest and effortless 360-degree rotation.",
+        "stock": true,
+        "rating": 4.8,
+        "reviews": 98
+    },
+    {
+        "id": "prod-15",
+        "name": "Classic Spindle Rocking Chair",
+        "category": "Rocking Chairs",
+        "price": 21000,
+        "image": "https://images.unsplash.com/photo-1505693314120-0d443867891c?auto=format&fit=crop&w=800&q=80",
+        "variant": "Solid Ash • Contoured Lumbar",
+        "material": "100% Solid Ash Hardwood",
+        "dimensions": "75cm x 85cm x 95cm",
+        "description": "Heirloom-grade solid wood rocking chair with precision hand-turned spindles and contoured lumbar support.",
+        "stock": true,
+        "rating": 4.7,
+        "reviews": 53
+    },
+    {
+        "id": "prod-16",
+        "name": "Montessori Front-Facing Bookcase",
+        "category": "Nursery Storage",
+        "price": 12000,
+        "image": "https://images.unsplash.com/photo-1594026112284-02bb6f3352fe?auto=format&fit=crop&w=800&q=80",
+        "variant": "Natural Pine • Low Accessible Reach",
+        "material": "FSC-Certified Solid Pine",
+        "dimensions": "85cm x 35cm x 75cm",
+        "description": "Low-profile front-facing book display designed to foster early reading, independence, and tidy organization.",
+        "stock": true,
+        "rating": 4.9,
+        "reviews": 118
+    },
+    {
+        "id": "prod-17",
+        "name": "Willow Dual-Door Nursery Wardrobe",
+        "category": "Nursery Storage",
+        "price": 42000,
+        "image": "https://imgs.search.brave.com/ZywfawWu-4wsyTwYDaGCgqKcYpFr5SetajlcH2AgeHY/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9vd25m/dXJuaXR1cmUuY28u/dWsvY2RuL3Nob3Av/ZmlsZXMvMi5qcGc_/dj0xNzUxMDI2OTQ1/JndpZHRoPTEyMTQ",
+        "variant": "Soft Sage • Clothes Rail & 2 Drawers",
+        "material": "Solid Wood Frame & Anti-Tip Hardware",
+        "dimensions": "90cm x 52cm x 175cm",
+        "description": "Full-height nursery armoire with hanging rail, adjustable shelves, and 2 deep bottom storage drawers.",
+        "stock": true,
+        "rating": 4.8,
+        "reviews": 62
+    },
+    {
+        "id": "prod-18",
+        "name": "Quilted Organic Muslin Playmat",
+        "category": "Decor & Bedding",
+        "price": 4800,
+        "image": "https://images.unsplash.com/photo-1519689680058-324335c77eba?auto=format&fit=crop&w=800&q=80",
+        "variant": "Earthy Sage & Ivory • Reversible",
+        "material": "100% GOTS Organic Cotton Muslin",
+        "dimensions": "110cm x 110cm",
+        "description": "Extra-soft quilted tummy time playmat with recycled hypoallergenic filling and machine-washable design.",
+        "stock": true,
+        "rating": 5,
+        "reviews": 194
+    }
+];
 
-        document.addEventListener('DOMContentLoaded', () => {
+        function renderProductDetailPage() {
+            const catalog = (window.productsList && window.productsList.length) ? window.productsList : localProductsList;
+            
             const urlParams = new URLSearchParams(window.location.search);
-            const productId = urlParams.get('id');
-            const product = productsList.find(p => p.id === productId);
+            let productId = urlParams.get('id');
+
+            // Default to first product if no id is provided
+            if (!productId && catalog.length > 0) {
+                productId = catalog[0].id;
+            }
+
+            const product = catalog.find(p => p.id === productId) || catalog.find(p => p.id.toLowerCase() === (productId || '').toLowerCase());
+
+            const errorContainer = document.getElementById('error-container');
+            const mainContent = document.getElementById('main-product-content');
 
             if (!product) {
-                document.getElementById('error-container').classList.remove('hidden');
+                if (errorContainer) errorContainer.classList.remove('hidden');
+                if (mainContent) mainContent.classList.add('hidden');
                 return;
             }
 
-            document.getElementById('detail-name').textContent = product.name;
+            if (errorContainer) errorContainer.classList.add('hidden');
+            if (mainContent) mainContent.classList.remove('hidden');
+
+            // Populate all details
+            const nameEl = document.getElementById('detail-name');
+            if (nameEl) nameEl.textContent = product.name;
             document.title = `${product.name} — Little Haven`;
-            document.getElementById('detail-category').textContent = product.category;
-            document.getElementById('detail-description').textContent = product.description;
-            document.getElementById('spec-material').textContent = product.material;
-            document.getElementById('spec-color').textContent = product.color;
-            document.getElementById('spec-dimensions').textContent = product.dimensions;
-            document.getElementById('detail-reviews').textContent = `(${product.reviews} reviews)`;
-            document.getElementById('detail-price').textContent = '₹' + product.price.toLocaleString('en-IN');
+
+            const catEl = document.getElementById('detail-category');
+            if (catEl) catEl.textContent = product.category;
+
+            const descEl = document.getElementById('detail-description');
+            if (descEl) descEl.textContent = product.description || 'Thoughtfully handcrafted nursery furniture designed for modern family living.';
+
+            const matEl = document.getElementById('spec-material');
+            if (matEl) matEl.textContent = product.material || 'FSC-Certified Solid Hardwood';
+
+            const colorEl = document.getElementById('spec-color');
+            if (colorEl) colorEl.textContent = product.color || product.variant || 'Natural Finish';
+
+            const dimEl = document.getElementById('spec-dimensions');
+            if (dimEl) dimEl.textContent = product.dimensions || 'Standard Nursery Dimensions';
+
+            const revEl = document.getElementById('detail-reviews');
+            if (revEl) revEl.textContent = `(${product.reviews || 85} reviews)`;
+
+            const priceEl = document.getElementById('detail-price');
+            if (priceEl) priceEl.textContent = '₹' + (product.price || 0).toLocaleString('en-IN');
             
             const stockIndicator = document.getElementById('detail-stock-indicator');
             const availText = document.getElementById('detail-availability');
-            if (!product.stock) {
-                stockIndicator.classList.replace('bg-green-500', 'bg-red-500');
-                availText.textContent = 'Out of Stock';
+            if (stockIndicator && availText) {
+                if (product.stock === false) {
+                    stockIndicator.className = 'w-2 h-2 rounded-full bg-red-500';
+                    availText.textContent = 'Out of Stock';
+                } else {
+                    stockIndicator.className = 'w-2 h-2 rounded-full bg-green-500';
+                    availText.textContent = 'In Stock — Ships in 24-48 Hours';
+                }
             }
 
-            document.getElementById('detail-main-img').src = product.image;
+            const imgEl = document.getElementById('detail-main-img');
+            if (imgEl && product.image) {
+                imgEl.src = product.image;
+                imgEl.alt = product.name;
+            }
+
+            // Hook up Add to Cart button
             const detailCartBtn = document.querySelector('.add-to-cart-btn');
             if (detailCartBtn) {
                 detailCartBtn.setAttribute('data-id', product.id);
-                detailCartBtn.addEventListener('click', (e) => {
+                // Clone button to remove any old listeners
+                const newCartBtn = detailCartBtn.cloneNode(true);
+                detailCartBtn.parentNode.replaceChild(newCartBtn, detailCartBtn);
+
+                newCartBtn.addEventListener('click', (e) => {
                     e.preventDefault();
                     if (window.addToCart) window.addToCart(product.id, 1);
+                    newCartBtn.textContent = 'Added to Cart ✓';
+                    newCartBtn.classList.add('bg-sage-700');
                     setTimeout(() => {
                         window.location.href = 'cart.html';
                     }, 400);
                 });
             }
+
+            // Hook up Wishlist button
             const detailWishBtn = document.getElementById('detail-wishlist-btn');
             if (detailWishBtn) {
                 detailWishBtn.setAttribute('data-id', product.id);
                 if (window.initBadges) window.initBadges();
             }
+        }
 
-            const mainContent = document.getElementById('main-product-content');
-            mainContent.classList.remove('invisible', 'opacity-0');
-            mainContent.classList.add('visible', 'opacity-100');
-        });
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', renderProductDetailPage);
+        } else {
+            renderProductDetailPage();
+        }
     </script>
 </body>
 </html>
