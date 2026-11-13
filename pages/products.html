@@ -84,28 +84,42 @@
             <p class="text-sm sm:text-base text-gray-500 dark:text-gray-400 max-w-2xl mx-auto transition-colors px-2">Thoughtfully crafted furniture designed to bring warmth, safety, and elegance to your little one's space.</p>
         </header>
 
-        <div class="flex flex-col md:flex-row justify-between items-stretch md:items-center mb-8 sm:mb-10 gap-4 border-b border-gray-200 dark:border-gray-800 pb-5 sm:pb-6 transition-colors w-full min-w-0">
-            <div class="flex items-center overflow-x-auto w-full md:w-auto pb-2 md:pb-0 gap-4 sm:gap-6 hide-scrollbar min-w-0" id="category-filters">
-                <button class="filter-btn active text-sage-600 dark:text-sage-400 font-medium whitespace-nowrap transition-colors border-b-2 border-sage-600 dark:border-sage-400 pb-1 text-sm sm:text-base shrink-0" data-cat="All">All Pieces</button>
-                <button class="filter-btn text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white font-medium whitespace-nowrap transition-colors border-b-2 border-transparent pb-1 text-sm sm:text-base shrink-0" data-cat="Cribs & Cots">Cribs & Cots</button>
-                <button class="filter-btn text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white font-medium whitespace-nowrap transition-colors border-b-2 border-transparent pb-1 text-sm sm:text-base shrink-0" data-cat="Dressers">Dressers</button>
-                <button class="filter-btn text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white font-medium whitespace-nowrap transition-colors border-b-2 border-transparent pb-1 text-sm sm:text-base shrink-0" data-cat="Rocking Chairs">Rocking Chairs</button>
-                <button class="filter-btn text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white font-medium whitespace-nowrap transition-colors border-b-2 border-transparent pb-1 text-sm sm:text-base shrink-0" data-cat="Storage">Storage</button>
+                <!-- SEARCH & CATEGORY FILTER SECTION -->
+        <div class="mb-8 sm:mb-10 space-y-6 border-b border-gray-200 dark:border-gray-800 pb-6 transition-colors w-full min-w-0">
+            <!-- Search Bar Row -->
+            <div class="flex flex-col sm:flex-row justify-between items-stretch sm:items-center gap-4">
+                <div class="relative w-full max-w-lg">
+                    <input type="text" id="product-search-input" placeholder="Search nursery furniture, cots, dressers, rockers, storage..." class="w-full pl-10 pr-10 py-3 bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg text-sm text-gray-900 dark:text-white placeholder-gray-400 focus:ring-2 focus:ring-sage-500 focus:outline-none transition-colors">
+                    <svg class="w-5 h-5 text-gray-400 absolute left-3.5 top-3.5 pointer-events-none" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+                    <button id="clear-search-btn" class="hidden absolute right-3 top-3 text-gray-400 hover:text-gray-600 dark:hover:text-gray-200 p-0.5" title="Clear Search">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+                    </button>
+                </div>
+                
+                <div class="flex justify-between items-center gap-4 shrink-0">
+                    <span class="text-xs sm:text-sm text-gray-500 dark:text-gray-400 font-medium" id="product-count">18 items</span>
+                    <select id="sort-select" class="bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 text-gray-700 dark:text-gray-300 text-xs sm:text-sm rounded-md focus:ring-sage-500 focus:border-sage-500 p-2.5 transition-colors cursor-pointer">
+                        <option>Featured</option>
+                        <option>Price: Low to High</option>
+                        <option>Price: High to Low</option>
+                        <option>Newest Arrivals</option>
+                    </select>
+                </div>
             </div>
-            
-            <div class="w-full md:w-auto flex justify-between items-center gap-3 sm:gap-4 shrink-0">
-                <span class="text-xs sm:text-sm text-gray-500 dark:text-gray-400 transition-colors font-medium" id="product-count">9 items</span>
-                <select id="sort-select" class="bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 text-gray-700 dark:text-gray-300 text-xs sm:text-sm rounded-md focus:ring-sage-500 focus:border-sage-500 block p-2 transition-colors cursor-pointer">
-                    <option>Featured</option>
-                    <option>Price: Low to High</option>
-                    <option>Price: High to Low</option>
-                    <option>Newest Arrivals</option>
-                </select>
+
+            <!-- Category Filter Tabs -->
+            <div class="flex items-center overflow-x-auto w-full pb-2 gap-2 sm:gap-3 hide-scrollbar min-w-0" id="category-filters">
+                <button class="filter-btn active px-4 py-2 rounded-full text-xs sm:text-sm font-medium whitespace-nowrap transition-colors bg-sage-600 text-white shrink-0" data-cat="All">All Pieces (18)</button>
+                <button class="filter-btn px-4 py-2 rounded-full text-xs sm:text-sm font-medium whitespace-nowrap transition-colors bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 shrink-0" data-cat="Cribs & Cots">Cribs & Cots (5)</button>
+                <button class="filter-btn px-4 py-2 rounded-full text-xs sm:text-sm font-medium whitespace-nowrap transition-colors bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 shrink-0" data-cat="Dressers & Changers">Dressers & Changers (4)</button>
+                <button class="filter-btn px-4 py-2 rounded-full text-xs sm:text-sm font-medium whitespace-nowrap transition-colors bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 shrink-0" data-cat="Rocking Chairs">Rocking Chairs (4)</button>
+                <button class="filter-btn px-4 py-2 rounded-full text-xs sm:text-sm font-medium whitespace-nowrap transition-colors bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 shrink-0" data-cat="Nursery Storage">Nursery Storage (3)</button>
+                <button class="filter-btn px-4 py-2 rounded-full text-xs sm:text-sm font-medium whitespace-nowrap transition-colors bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 shrink-0" data-cat="Decor & Bedding">Decor & Bedding (2)</button>
             </div>
         </div>
 
                 <div id="product-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5 sm:gap-8 w-full min-w-0">
-            <!-- 1. Haven Convertible Crib -->
+            <!-- prod-01: Haven Convertible Crib -->
             <div class="product-card bg-white dark:bg-gray-800 rounded-lg overflow-hidden border border-gray-100 dark:border-gray-700 shadow-sm flex flex-col group transition-colors w-full" data-cat="Cribs & Cots">
                 <div class="relative aspect-[4/3] bg-gray-100 dark:bg-gray-700 overflow-hidden">
                     <img src="https://i.pinimg.com/1200x/96/18/18/961818b0e00fdf7140885a8682a7ce93.jpg" alt="Haven Convertible Crib" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
@@ -116,7 +130,8 @@
                     </button>
                     <div class="text-xs text-gray-500 dark:text-gray-400 mb-1">Cribs & Cots</div>
                     <h3 class="font-serif text-base sm:text-lg mb-1 text-gray-900 dark:text-white transition-colors pr-6">Haven Convertible Crib</h3>
-                    <div class="flex justify-between items-center mt-auto pt-3 sm:pt-4">
+                    <p class="text-xs text-gray-400 dark:text-gray-500 mb-2 truncate">Warm White • Solid Oak</p>
+                    <div class="flex justify-between items-center mt-auto pt-3 sm:pt-4 border-t border-gray-100 dark:border-gray-700">
                         <span class="font-medium text-sm sm:text-base text-gray-900 dark:text-white transition-colors">₹35,000</span>
                         <div class="flex items-center gap-2">
                             <a href="product-details.html?id=prod-01" class="text-xs sm:text-sm underline text-gray-600 dark:text-gray-300 hover:text-sage-600 transition-colors">View</a>
@@ -126,7 +141,7 @@
                 </div>
             </div>
 
-            <!-- 2. Willow 3-in-1 Crib -->
+            <!-- prod-02: Willow 3-in-1 Crib -->
             <div class="product-card bg-white dark:bg-gray-800 rounded-lg overflow-hidden border border-gray-100 dark:border-gray-700 shadow-sm flex flex-col group transition-colors w-full" data-cat="Cribs & Cots">
                 <div class="relative aspect-[4/3] bg-gray-100 dark:bg-gray-700 overflow-hidden">
                     <img src="https://i.pinimg.com/1200x/d7/27/64/d7276431482de4de5a81a06d5539705c.jpg" alt="Willow 3-in-1 Crib" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
@@ -137,7 +152,8 @@
                     </button>
                     <div class="text-xs text-gray-500 dark:text-gray-400 mb-1">Cribs & Cots</div>
                     <h3 class="font-serif text-base sm:text-lg mb-1 text-gray-900 dark:text-white transition-colors pr-6">Willow 3-in-1 Crib</h3>
-                    <div class="flex justify-between items-center mt-auto pt-3 sm:pt-4">
+                    <p class="text-xs text-gray-400 dark:text-gray-500 mb-2 truncate">Soft Sage • Sustainable Pine</p>
+                    <div class="flex justify-between items-center mt-auto pt-3 sm:pt-4 border-t border-gray-100 dark:border-gray-700">
                         <span class="font-medium text-sm sm:text-base text-gray-900 dark:text-white transition-colors">₹28,000</span>
                         <div class="flex items-center gap-2">
                             <a href="product-details.html?id=prod-02" class="text-xs sm:text-sm underline text-gray-600 dark:text-gray-300 hover:text-sage-600 transition-colors">View</a>
@@ -147,7 +163,7 @@
                 </div>
             </div>
 
-            <!-- 3. Meadow Cot -->
+            <!-- prod-03: Meadow Cot -->
             <div class="product-card bg-white dark:bg-gray-800 rounded-lg overflow-hidden border border-gray-100 dark:border-gray-700 shadow-sm flex flex-col group transition-colors w-full" data-cat="Cribs & Cots">
                 <div class="relative aspect-[4/3] bg-gray-100 dark:bg-gray-700 overflow-hidden">
                     <img src="https://i.pinimg.com/736x/7d/3c/9d/7d3c9d3fe387f6092a0e916cdd467cc3.jpg" alt="Meadow Cot" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
@@ -158,7 +174,8 @@
                     </button>
                     <div class="text-xs text-gray-500 dark:text-gray-400 mb-1">Cribs & Cots</div>
                     <h3 class="font-serif text-base sm:text-lg mb-1 text-gray-900 dark:text-white transition-colors pr-6">Meadow Cot</h3>
-                    <div class="flex justify-between items-center mt-auto pt-3 sm:pt-4">
+                    <p class="text-xs text-gray-400 dark:text-gray-500 mb-2 truncate">Natural Wood • Birch</p>
+                    <div class="flex justify-between items-center mt-auto pt-3 sm:pt-4 border-t border-gray-100 dark:border-gray-700">
                         <span class="font-medium text-sm sm:text-base text-gray-900 dark:text-white transition-colors">₹22,000</span>
                         <div class="flex items-center gap-2">
                             <a href="product-details.html?id=prod-03" class="text-xs sm:text-sm underline text-gray-600 dark:text-gray-300 hover:text-sage-600 transition-colors">View</a>
@@ -168,7 +185,7 @@
                 </div>
             </div>
 
-            <!-- 4. Luna Mini Crib -->
+            <!-- prod-04: Luna Mini Crib -->
             <div class="product-card bg-white dark:bg-gray-800 rounded-lg overflow-hidden border border-gray-100 dark:border-gray-700 shadow-sm flex flex-col group transition-colors w-full" data-cat="Cribs & Cots">
                 <div class="relative aspect-[4/3] bg-gray-100 dark:bg-gray-700 overflow-hidden">
                     <img src="https://i.pinimg.com/736x/9c/fe/59/9cfe597ae8f014d068d441a14aa84023.jpg" alt="Luna Mini Crib" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
@@ -179,7 +196,8 @@
                     </button>
                     <div class="text-xs text-gray-500 dark:text-gray-400 mb-1">Cribs & Cots</div>
                     <h3 class="font-serif text-base sm:text-lg mb-1 text-gray-900 dark:text-white transition-colors pr-6">Luna Mini Crib</h3>
-                    <div class="flex justify-between items-center mt-auto pt-3 sm:pt-4">
+                    <p class="text-xs text-gray-400 dark:text-gray-500 mb-2 truncate">Ivory • Solid Beech</p>
+                    <div class="flex justify-between items-center mt-auto pt-3 sm:pt-4 border-t border-gray-100 dark:border-gray-700">
                         <span class="font-medium text-sm sm:text-base text-gray-900 dark:text-white transition-colors">₹18,000</span>
                         <div class="flex items-center gap-2">
                             <a href="product-details.html?id=prod-04" class="text-xs sm:text-sm underline text-gray-600 dark:text-gray-300 hover:text-sage-600 transition-colors">View</a>
@@ -189,8 +207,8 @@
                 </div>
             </div>
 
-            <!-- 5. Haven 6-Drawer Dresser -->
-            <div class="product-card bg-white dark:bg-gray-800 rounded-lg overflow-hidden border border-gray-100 dark:border-gray-700 shadow-sm flex flex-col group transition-colors w-full" data-cat="Dressers">
+            <!-- prod-05: Haven 6-Drawer Dresser -->
+            <div class="product-card bg-white dark:bg-gray-800 rounded-lg overflow-hidden border border-gray-100 dark:border-gray-700 shadow-sm flex flex-col group transition-colors w-full" data-cat="Dressers & Changers">
                 <div class="relative aspect-[4/3] bg-gray-100 dark:bg-gray-700 overflow-hidden">
                     <img src="https://i.pinimg.com/1200x/30/e3/cc/30e3ccd8185377de379cd9442c8b71be.jpg" alt="Haven 6-Drawer Dresser" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
                 </div>
@@ -198,9 +216,10 @@
                     <button class="wishlist-btn absolute top-2 right-2 text-gray-400 hover:text-red-500 transition-colors" title="Add to Wishlist" data-id="prod-05">
                         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path></svg>
                     </button>
-                    <div class="text-xs text-gray-500 dark:text-gray-400 mb-1">Dressers</div>
+                    <div class="text-xs text-gray-500 dark:text-gray-400 mb-1">Dressers & Changers</div>
                     <h3 class="font-serif text-base sm:text-lg mb-1 text-gray-900 dark:text-white transition-colors pr-6">Haven 6-Drawer Dresser</h3>
-                    <div class="flex justify-between items-center mt-auto pt-3 sm:pt-4">
+                    <p class="text-xs text-gray-400 dark:text-gray-500 mb-2 truncate">Warm White • Solid Oak</p>
+                    <div class="flex justify-between items-center mt-auto pt-3 sm:pt-4 border-t border-gray-100 dark:border-gray-700">
                         <span class="font-medium text-sm sm:text-base text-gray-900 dark:text-white transition-colors">₹45,000</span>
                         <div class="flex items-center gap-2">
                             <a href="product-details.html?id=prod-05" class="text-xs sm:text-sm underline text-gray-600 dark:text-gray-300 hover:text-sage-600 transition-colors">View</a>
@@ -210,8 +229,8 @@
                 </div>
             </div>
 
-            <!-- 6. Willow Changing Dresser -->
-            <div class="product-card bg-white dark:bg-gray-800 rounded-lg overflow-hidden border border-gray-100 dark:border-gray-700 shadow-sm flex flex-col group transition-colors w-full" data-cat="Dressers">
+            <!-- prod-06: Willow Changing Dresser -->
+            <div class="product-card bg-white dark:bg-gray-800 rounded-lg overflow-hidden border border-gray-100 dark:border-gray-700 shadow-sm flex flex-col group transition-colors w-full" data-cat="Dressers & Changers">
                 <div class="relative aspect-[4/3] bg-gray-100 dark:bg-gray-700 overflow-hidden">
                     <img src="https://i.pinimg.com/736x/8b/d4/b2/8bd4b20ab76b007402e2fa18f29cfd1b.jpg" alt="Willow Changing Dresser" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
                 </div>
@@ -219,9 +238,10 @@
                     <button class="wishlist-btn absolute top-2 right-2 text-gray-400 hover:text-red-500 transition-colors" title="Add to Wishlist" data-id="prod-06">
                         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path></svg>
                     </button>
-                    <div class="text-xs text-gray-500 dark:text-gray-400 mb-1">Dressers</div>
+                    <div class="text-xs text-gray-500 dark:text-gray-400 mb-1">Dressers & Changers</div>
                     <h3 class="font-serif text-base sm:text-lg mb-1 text-gray-900 dark:text-white transition-colors pr-6">Willow Changing Dresser</h3>
-                    <div class="flex justify-between items-center mt-auto pt-3 sm:pt-4">
+                    <p class="text-xs text-gray-400 dark:text-gray-500 mb-2 truncate">Soft Sage • Pine Changing Topper</p>
+                    <div class="flex justify-between items-center mt-auto pt-3 sm:pt-4 border-t border-gray-100 dark:border-gray-700">
                         <span class="font-medium text-sm sm:text-base text-gray-900 dark:text-white transition-colors">₹32,000</span>
                         <div class="flex items-center gap-2">
                             <a href="product-details.html?id=prod-06" class="text-xs sm:text-sm underline text-gray-600 dark:text-gray-300 hover:text-sage-600 transition-colors">View</a>
@@ -231,8 +251,8 @@
                 </div>
             </div>
 
-            <!-- 7. Oakline Storage Dresser -->
-            <div class="product-card bg-white dark:bg-gray-800 rounded-lg overflow-hidden border border-gray-100 dark:border-gray-700 shadow-sm flex flex-col group transition-colors w-full" data-cat="Dressers">
+            <!-- prod-07: Oakline Storage Dresser -->
+            <div class="product-card bg-white dark:bg-gray-800 rounded-lg overflow-hidden border border-gray-100 dark:border-gray-700 shadow-sm flex flex-col group transition-colors w-full" data-cat="Dressers & Changers">
                 <div class="relative aspect-[4/3] bg-gray-100 dark:bg-gray-700 overflow-hidden">
                     <img src="https://i.pinimg.com/1200x/3e/d4/64/3ed4649513cc3be22f158dd81bb9d5eb.jpg" alt="Oakline Storage Dresser" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
                 </div>
@@ -240,9 +260,10 @@
                     <button class="wishlist-btn absolute top-2 right-2 text-gray-400 hover:text-red-500 transition-colors" title="Add to Wishlist" data-id="prod-07">
                         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path></svg>
                     </button>
-                    <div class="text-xs text-gray-500 dark:text-gray-400 mb-1">Dressers</div>
+                    <div class="text-xs text-gray-500 dark:text-gray-400 mb-1">Dressers & Changers</div>
                     <h3 class="font-serif text-base sm:text-lg mb-1 text-gray-900 dark:text-white transition-colors pr-6">Oakline Storage Dresser</h3>
-                    <div class="flex justify-between items-center mt-auto pt-3 sm:pt-4">
+                    <p class="text-xs text-gray-400 dark:text-gray-500 mb-2 truncate">Natural Oak • Oak Veneer</p>
+                    <div class="flex justify-between items-center mt-auto pt-3 sm:pt-4 border-t border-gray-100 dark:border-gray-700">
                         <span class="font-medium text-sm sm:text-base text-gray-900 dark:text-white transition-colors">₹38,000</span>
                         <div class="flex items-center gap-2">
                             <a href="product-details.html?id=prod-07" class="text-xs sm:text-sm underline text-gray-600 dark:text-gray-300 hover:text-sage-600 transition-colors">View</a>
@@ -252,7 +273,7 @@
                 </div>
             </div>
 
-            <!-- 8. Cloud Nursery Rocker -->
+            <!-- prod-08: Cloud Nursery Rocker -->
             <div class="product-card bg-white dark:bg-gray-800 rounded-lg overflow-hidden border border-gray-100 dark:border-gray-700 shadow-sm flex flex-col group transition-colors w-full" data-cat="Rocking Chairs">
                 <div class="relative aspect-[4/3] bg-gray-100 dark:bg-gray-700 overflow-hidden">
                     <img src="https://i.pinimg.com/236x/da/de/c5/dadec541ceb91305eb7f78d8ff29bbef.jpg" alt="Cloud Nursery Rocker" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
@@ -263,7 +284,8 @@
                     </button>
                     <div class="text-xs text-gray-500 dark:text-gray-400 mb-1">Rocking Chairs</div>
                     <h3 class="font-serif text-base sm:text-lg mb-1 text-gray-900 dark:text-white transition-colors pr-6">Cloud Nursery Rocker</h3>
-                    <div class="flex justify-between items-center mt-auto pt-3 sm:pt-4">
+                    <p class="text-xs text-gray-400 dark:text-gray-500 mb-2 truncate">Oatmeal • Linen & Solid Wood</p>
+                    <div class="flex justify-between items-center mt-auto pt-3 sm:pt-4 border-t border-gray-100 dark:border-gray-700">
                         <span class="font-medium text-sm sm:text-base text-gray-900 dark:text-white transition-colors">₹25,000</span>
                         <div class="flex items-center gap-2">
                             <a href="product-details.html?id=prod-08" class="text-xs sm:text-sm underline text-gray-600 dark:text-gray-300 hover:text-sage-600 transition-colors">View</a>
@@ -273,8 +295,8 @@
                 </div>
             </div>
 
-            <!-- 9. Little Haven Toy Cabinet -->
-            <div class="product-card bg-white dark:bg-gray-800 rounded-lg overflow-hidden border border-gray-100 dark:border-gray-700 shadow-sm flex flex-col group transition-colors w-full" data-cat="Storage">
+            <!-- prod-09: Little Haven Toy Cabinet -->
+            <div class="product-card bg-white dark:bg-gray-800 rounded-lg overflow-hidden border border-gray-100 dark:border-gray-700 shadow-sm flex flex-col group transition-colors w-full" data-cat="Nursery Storage">
                 <div class="relative aspect-[4/3] bg-gray-100 dark:bg-gray-700 overflow-hidden">
                     <img src="https://i.pinimg.com/736x/53/7d/38/537d38f12a7845155d5fb2453382acde.jpg" alt="Little Haven Toy Cabinet" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
                 </div>
@@ -282,9 +304,10 @@
                     <button class="wishlist-btn absolute top-2 right-2 text-gray-400 hover:text-red-500 transition-colors" title="Add to Wishlist" data-id="prod-09">
                         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path></svg>
                     </button>
-                    <div class="text-xs text-gray-500 dark:text-gray-400 mb-1">Storage</div>
+                    <div class="text-xs text-gray-500 dark:text-gray-400 mb-1">Nursery Storage</div>
                     <h3 class="font-serif text-base sm:text-lg mb-1 text-gray-900 dark:text-white transition-colors pr-6">Little Haven Toy Cabinet</h3>
-                    <div class="flex justify-between items-center mt-auto pt-3 sm:pt-4">
+                    <p class="text-xs text-gray-400 dark:text-gray-500 mb-2 truncate">Soft Sage • Child-Safe Pine</p>
+                    <div class="flex justify-between items-center mt-auto pt-3 sm:pt-4 border-t border-gray-100 dark:border-gray-700">
                         <span class="font-medium text-sm sm:text-base text-gray-900 dark:text-white transition-colors">₹15,000</span>
                         <div class="flex items-center gap-2">
                             <a href="product-details.html?id=prod-09" class="text-xs sm:text-sm underline text-gray-600 dark:text-gray-300 hover:text-sage-600 transition-colors">View</a>
@@ -293,7 +316,284 @@
                     </div>
                 </div>
             </div>
+
+            <!-- prod-10: Organic Cotton Crib Sheet -->
+            <div class="product-card bg-white dark:bg-gray-800 rounded-lg overflow-hidden border border-gray-100 dark:border-gray-700 shadow-sm flex flex-col group transition-colors w-full" data-cat="Decor & Bedding">
+                <div class="relative aspect-[4/3] bg-gray-100 dark:bg-gray-700 overflow-hidden">
+                    <img src="https://i.pinimg.com/1200x/33/f3/aa/33f3aa6b4d8c5948cc5beb16a4106334.jpg" alt="Organic Cotton Crib Sheet" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                </div>
+                <div class="p-4 flex flex-col flex-grow relative">
+                    <button class="wishlist-btn absolute top-2 right-2 text-gray-400 hover:text-red-500 transition-colors" title="Add to Wishlist" data-id="prod-10">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path></svg>
+                    </button>
+                    <div class="text-xs text-gray-500 dark:text-gray-400 mb-1">Decor & Bedding</div>
+                    <h3 class="font-serif text-base sm:text-lg mb-1 text-gray-900 dark:text-white transition-colors pr-6">Organic Cotton Crib Sheet</h3>
+                    <p class="text-xs text-gray-400 dark:text-gray-500 mb-2 truncate">Sand • 100% Organic Cotton</p>
+                    <div class="flex justify-between items-center mt-auto pt-3 sm:pt-4 border-t border-gray-100 dark:border-gray-700">
+                        <span class="font-medium text-sm sm:text-base text-gray-900 dark:text-white transition-colors">₹3,500</span>
+                        <div class="flex items-center gap-2">
+                            <a href="product-details.html?id=prod-10" class="text-xs sm:text-sm underline text-gray-600 dark:text-gray-300 hover:text-sage-600 transition-colors">View</a>
+                            <button class="add-to-cart-btn px-2.5 py-1 bg-sage-600 hover:bg-sage-700 text-white text-xs font-medium rounded transition-colors shadow-sm" data-id="prod-10">+ Cart</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- prod-11: Astrid Oval Convertible Crib -->
+            <div class="product-card bg-white dark:bg-gray-800 rounded-lg overflow-hidden border border-gray-100 dark:border-gray-700 shadow-sm flex flex-col group transition-colors w-full" data-cat="Cribs & Cots">
+                <div class="relative aspect-[4/3] bg-gray-100 dark:bg-gray-700 overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1544816155-12df9643f363?auto=format&fit=crop&w=800&q=80" alt="Astrid Oval Convertible Crib" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                </div>
+                <div class="p-4 flex flex-col flex-grow relative">
+                    <button class="wishlist-btn absolute top-2 right-2 text-gray-400 hover:text-red-500 transition-colors" title="Add to Wishlist" data-id="prod-11">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path></svg>
+                    </button>
+                    <div class="text-xs text-gray-500 dark:text-gray-400 mb-1">Cribs & Cots</div>
+                    <h3 class="font-serif text-base sm:text-lg mb-1 text-gray-900 dark:text-white transition-colors pr-6">Astrid Oval Convertible Crib</h3>
+                    <p class="text-xs text-gray-400 dark:text-gray-500 mb-2 truncate">Natural Ash • Curved Oval Spindles</p>
+                    <div class="flex justify-between items-center mt-auto pt-3 sm:pt-4 border-t border-gray-100 dark:border-gray-700">
+                        <span class="font-medium text-sm sm:text-base text-gray-900 dark:text-white transition-colors">₹39,000</span>
+                        <div class="flex items-center gap-2">
+                            <a href="product-details.html?id=prod-11" class="text-xs sm:text-sm underline text-gray-600 dark:text-gray-300 hover:text-sage-600 transition-colors">View</a>
+                            <button class="add-to-cart-btn px-2.5 py-1 bg-sage-600 hover:bg-sage-700 text-white text-xs font-medium rounded transition-colors shadow-sm" data-id="prod-11">+ Cart</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- prod-12: Clara 3-Drawer Compact Changer -->
+            <div class="product-card bg-white dark:bg-gray-800 rounded-lg overflow-hidden border border-gray-100 dark:border-gray-700 shadow-sm flex flex-col group transition-colors w-full" data-cat="Dressers & Changers">
+                <div class="relative aspect-[4/3] bg-gray-100 dark:bg-gray-700 overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1595428774223-ef52624120d2?auto=format&fit=crop&w=800&q=80" alt="Clara 3-Drawer Compact Changer" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                </div>
+                <div class="p-4 flex flex-col flex-grow relative">
+                    <button class="wishlist-btn absolute top-2 right-2 text-gray-400 hover:text-red-500 transition-colors" title="Add to Wishlist" data-id="prod-12">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path></svg>
+                    </button>
+                    <div class="text-xs text-gray-500 dark:text-gray-400 mb-1">Dressers & Changers</div>
+                    <h3 class="font-serif text-base sm:text-lg mb-1 text-gray-900 dark:text-white transition-colors pr-6">Clara 3-Drawer Compact Changer</h3>
+                    <p class="text-xs text-gray-400 dark:text-gray-500 mb-2 truncate">Warm Ivory • Removable Topper</p>
+                    <div class="flex justify-between items-center mt-auto pt-3 sm:pt-4 border-t border-gray-100 dark:border-gray-700">
+                        <span class="font-medium text-sm sm:text-base text-gray-900 dark:text-white transition-colors">₹26,000</span>
+                        <div class="flex items-center gap-2">
+                            <a href="product-details.html?id=prod-12" class="text-xs sm:text-sm underline text-gray-600 dark:text-gray-300 hover:text-sage-600 transition-colors">View</a>
+                            <button class="add-to-cart-btn px-2.5 py-1 bg-sage-600 hover:bg-sage-700 text-white text-xs font-medium rounded transition-colors shadow-sm" data-id="prod-12">+ Cart</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- prod-13: Serene Power Glider Recliner -->
+            <div class="product-card bg-white dark:bg-gray-800 rounded-lg overflow-hidden border border-gray-100 dark:border-gray-700 shadow-sm flex flex-col group transition-colors w-full" data-cat="Rocking Chairs">
+                <div class="relative aspect-[4/3] bg-gray-100 dark:bg-gray-700 overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?auto=format&fit=crop&w=800&q=80" alt="Serene Power Glider Recliner" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                </div>
+                <div class="p-4 flex flex-col flex-grow relative">
+                    <button class="wishlist-btn absolute top-2 right-2 text-gray-400 hover:text-red-500 transition-colors" title="Add to Wishlist" data-id="prod-13">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path></svg>
+                    </button>
+                    <div class="text-xs text-gray-500 dark:text-gray-400 mb-1">Rocking Chairs</div>
+                    <h3 class="font-serif text-base sm:text-lg mb-1 text-gray-900 dark:text-white transition-colors pr-6">Serene Power Glider Recliner</h3>
+                    <p class="text-xs text-gray-400 dark:text-gray-500 mb-2 truncate">Oatmeal Bouclé • Whisper Power Recline</p>
+                    <div class="flex justify-between items-center mt-auto pt-3 sm:pt-4 border-t border-gray-100 dark:border-gray-700">
+                        <span class="font-medium text-sm sm:text-base text-gray-900 dark:text-white transition-colors">₹34,000</span>
+                        <div class="flex items-center gap-2">
+                            <a href="product-details.html?id=prod-13" class="text-xs sm:text-sm underline text-gray-600 dark:text-gray-300 hover:text-sage-600 transition-colors">View</a>
+                            <button class="add-to-cart-btn px-2.5 py-1 bg-sage-600 hover:bg-sage-700 text-white text-xs font-medium rounded transition-colors shadow-sm" data-id="prod-13">+ Cart</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- prod-14: Haven Ergonomic Swivel Glider -->
+            <div class="product-card bg-white dark:bg-gray-800 rounded-lg overflow-hidden border border-gray-100 dark:border-gray-700 shadow-sm flex flex-col group transition-colors w-full" data-cat="Rocking Chairs">
+                <div class="relative aspect-[4/3] bg-gray-100 dark:bg-gray-700 overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1567538096630-e0c55bd6374c?auto=format&fit=crop&w=800&q=80" alt="Haven Ergonomic Swivel Glider" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                </div>
+                <div class="p-4 flex flex-col flex-grow relative">
+                    <button class="wishlist-btn absolute top-2 right-2 text-gray-400 hover:text-red-500 transition-colors" title="Add to Wishlist" data-id="prod-14">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path></svg>
+                    </button>
+                    <div class="text-xs text-gray-500 dark:text-gray-400 mb-1">Rocking Chairs</div>
+                    <h3 class="font-serif text-base sm:text-lg mb-1 text-gray-900 dark:text-white transition-colors pr-6">Haven Ergonomic Swivel Glider</h3>
+                    <p class="text-xs text-gray-400 dark:text-gray-500 mb-2 truncate">Soft Sage Velvet • 360 Swivel</p>
+                    <div class="flex justify-between items-center mt-auto pt-3 sm:pt-4 border-t border-gray-100 dark:border-gray-700">
+                        <span class="font-medium text-sm sm:text-base text-gray-900 dark:text-white transition-colors">₹29,000</span>
+                        <div class="flex items-center gap-2">
+                            <a href="product-details.html?id=prod-14" class="text-xs sm:text-sm underline text-gray-600 dark:text-gray-300 hover:text-sage-600 transition-colors">View</a>
+                            <button class="add-to-cart-btn px-2.5 py-1 bg-sage-600 hover:bg-sage-700 text-white text-xs font-medium rounded transition-colors shadow-sm" data-id="prod-14">+ Cart</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- prod-15: Classic Spindle Rocking Chair -->
+            <div class="product-card bg-white dark:bg-gray-800 rounded-lg overflow-hidden border border-gray-100 dark:border-gray-700 shadow-sm flex flex-col group transition-colors w-full" data-cat="Rocking Chairs">
+                <div class="relative aspect-[4/3] bg-gray-100 dark:bg-gray-700 overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1505693314120-0d443867891c?auto=format&fit=crop&w=800&q=80" alt="Classic Spindle Rocking Chair" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                </div>
+                <div class="p-4 flex flex-col flex-grow relative">
+                    <button class="wishlist-btn absolute top-2 right-2 text-gray-400 hover:text-red-500 transition-colors" title="Add to Wishlist" data-id="prod-15">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path></svg>
+                    </button>
+                    <div class="text-xs text-gray-500 dark:text-gray-400 mb-1">Rocking Chairs</div>
+                    <h3 class="font-serif text-base sm:text-lg mb-1 text-gray-900 dark:text-white transition-colors pr-6">Classic Spindle Rocking Chair</h3>
+                    <p class="text-xs text-gray-400 dark:text-gray-500 mb-2 truncate">Solid Ash • Contoured Lumbar</p>
+                    <div class="flex justify-between items-center mt-auto pt-3 sm:pt-4 border-t border-gray-100 dark:border-gray-700">
+                        <span class="font-medium text-sm sm:text-base text-gray-900 dark:text-white transition-colors">₹21,000</span>
+                        <div class="flex items-center gap-2">
+                            <a href="product-details.html?id=prod-15" class="text-xs sm:text-sm underline text-gray-600 dark:text-gray-300 hover:text-sage-600 transition-colors">View</a>
+                            <button class="add-to-cart-btn px-2.5 py-1 bg-sage-600 hover:bg-sage-700 text-white text-xs font-medium rounded transition-colors shadow-sm" data-id="prod-15">+ Cart</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- prod-16: Montessori Front-Facing Bookcase -->
+            <div class="product-card bg-white dark:bg-gray-800 rounded-lg overflow-hidden border border-gray-100 dark:border-gray-700 shadow-sm flex flex-col group transition-colors w-full" data-cat="Nursery Storage">
+                <div class="relative aspect-[4/3] bg-gray-100 dark:bg-gray-700 overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1594026112284-02bb6f3352fe?auto=format&fit=crop&w=800&q=80" alt="Montessori Front-Facing Bookcase" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                </div>
+                <div class="p-4 flex flex-col flex-grow relative">
+                    <button class="wishlist-btn absolute top-2 right-2 text-gray-400 hover:text-red-500 transition-colors" title="Add to Wishlist" data-id="prod-16">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path></svg>
+                    </button>
+                    <div class="text-xs text-gray-500 dark:text-gray-400 mb-1">Nursery Storage</div>
+                    <h3 class="font-serif text-base sm:text-lg mb-1 text-gray-900 dark:text-white transition-colors pr-6">Montessori Front-Facing Bookcase</h3>
+                    <p class="text-xs text-gray-400 dark:text-gray-500 mb-2 truncate">Natural Pine • Low Accessible Reach</p>
+                    <div class="flex justify-between items-center mt-auto pt-3 sm:pt-4 border-t border-gray-100 dark:border-gray-700">
+                        <span class="font-medium text-sm sm:text-base text-gray-900 dark:text-white transition-colors">₹12,000</span>
+                        <div class="flex items-center gap-2">
+                            <a href="product-details.html?id=prod-16" class="text-xs sm:text-sm underline text-gray-600 dark:text-gray-300 hover:text-sage-600 transition-colors">View</a>
+                            <button class="add-to-cart-btn px-2.5 py-1 bg-sage-600 hover:bg-sage-700 text-white text-xs font-medium rounded transition-colors shadow-sm" data-id="prod-16">+ Cart</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- prod-17: Willow Dual-Door Nursery Wardrobe -->
+            <div class="product-card bg-white dark:bg-gray-800 rounded-lg overflow-hidden border border-gray-100 dark:border-gray-700 shadow-sm flex flex-col group transition-colors w-full" data-cat="Nursery Storage">
+                <div class="relative aspect-[4/3] bg-gray-100 dark:bg-gray-700 overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?auto=format&fit=crop&w=800&q=80" alt="Willow Dual-Door Nursery Wardrobe" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                </div>
+                <div class="p-4 flex flex-col flex-grow relative">
+                    <button class="wishlist-btn absolute top-2 right-2 text-gray-400 hover:text-red-500 transition-colors" title="Add to Wishlist" data-id="prod-17">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path></svg>
+                    </button>
+                    <div class="text-xs text-gray-500 dark:text-gray-400 mb-1">Nursery Storage</div>
+                    <h3 class="font-serif text-base sm:text-lg mb-1 text-gray-900 dark:text-white transition-colors pr-6">Willow Dual-Door Nursery Wardrobe</h3>
+                    <p class="text-xs text-gray-400 dark:text-gray-500 mb-2 truncate">Soft Sage • Clothes Rail & 2 Drawers</p>
+                    <div class="flex justify-between items-center mt-auto pt-3 sm:pt-4 border-t border-gray-100 dark:border-gray-700">
+                        <span class="font-medium text-sm sm:text-base text-gray-900 dark:text-white transition-colors">₹42,000</span>
+                        <div class="flex items-center gap-2">
+                            <a href="product-details.html?id=prod-17" class="text-xs sm:text-sm underline text-gray-600 dark:text-gray-300 hover:text-sage-600 transition-colors">View</a>
+                            <button class="add-to-cart-btn px-2.5 py-1 bg-sage-600 hover:bg-sage-700 text-white text-xs font-medium rounded transition-colors shadow-sm" data-id="prod-17">+ Cart</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- prod-18: Quilted Organic Muslin Playmat -->
+            <div class="product-card bg-white dark:bg-gray-800 rounded-lg overflow-hidden border border-gray-100 dark:border-gray-700 shadow-sm flex flex-col group transition-colors w-full" data-cat="Decor & Bedding">
+                <div class="relative aspect-[4/3] bg-gray-100 dark:bg-gray-700 overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1519689680058-324335c77eba?auto=format&fit=crop&w=800&q=80" alt="Quilted Organic Muslin Playmat" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                </div>
+                <div class="p-4 flex flex-col flex-grow relative">
+                    <button class="wishlist-btn absolute top-2 right-2 text-gray-400 hover:text-red-500 transition-colors" title="Add to Wishlist" data-id="prod-18">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path></svg>
+                    </button>
+                    <div class="text-xs text-gray-500 dark:text-gray-400 mb-1">Decor & Bedding</div>
+                    <h3 class="font-serif text-base sm:text-lg mb-1 text-gray-900 dark:text-white transition-colors pr-6">Quilted Organic Muslin Playmat</h3>
+                    <p class="text-xs text-gray-400 dark:text-gray-500 mb-2 truncate">Earthy Sage & Ivory • Reversible</p>
+                    <div class="flex justify-between items-center mt-auto pt-3 sm:pt-4 border-t border-gray-100 dark:border-gray-700">
+                        <span class="font-medium text-sm sm:text-base text-gray-900 dark:text-white transition-colors">₹4,800</span>
+                        <div class="flex items-center gap-2">
+                            <a href="product-details.html?id=prod-18" class="text-xs sm:text-sm underline text-gray-600 dark:text-gray-300 hover:text-sage-600 transition-colors">View</a>
+                            <button class="add-to-cart-btn px-2.5 py-1 bg-sage-600 hover:bg-sage-700 text-white text-xs font-medium rounded transition-colors shadow-sm" data-id="prod-18">+ Cart</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
+
+        <!-- CUSTOMER REVIEWS SECTION -->
+        <section id="reviews" class="mt-20 sm:mt-28 border-t border-gray-200 dark:border-gray-800 pt-16 transition-colors">
+            <div class="text-center max-w-3xl mx-auto mb-12 sm:mb-16">
+                <span class="text-xs font-semibold uppercase tracking-widest text-sage-600 dark:text-sage-400 mb-2 block">Parent Feedback</span>
+                <h2 class="text-3xl sm:text-4xl font-serif text-gray-900 dark:text-white mb-4">Customer Reviews & Parent Stories</h2>
+                <p class="text-sm sm:text-base text-gray-600 dark:text-gray-400">Over 850+ parents trust Little Haven for safe, durable, and sustainable nursery furniture.</p>
+                <div class="flex items-center justify-center gap-2 mt-4 text-amber-500">
+                    <div class="flex">
+                        <svg class="w-5 h-5 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                        <svg class="w-5 h-5 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                        <svg class="w-5 h-5 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                        <svg class="w-5 h-5 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                        <svg class="w-5 h-5 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                    </div>
+                    <span class="text-sm font-bold text-gray-900 dark:text-white">4.9 / 5.0 Rating</span>
+                    <span class="text-xs text-gray-400">(850+ Verified Reviews)</span>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+                <!-- Review 1 -->
+                <div class="bg-white dark:bg-gray-800 p-6 sm:p-8 rounded-xl border border-gray-100 dark:border-gray-700 shadow-sm flex flex-col justify-between transition-colors">
+                    <div>
+                        <div class="flex items-center gap-1 text-amber-500 mb-3">
+                            <span>★★★★★</span>
+                            <span class="text-xs font-semibold px-2 py-0.5 rounded bg-sage-50 dark:bg-sage-900/40 text-sage-700 dark:text-sage-300 ml-2">Verified Purchase</span>
+                        </div>
+                        <h4 class="font-serif text-lg font-medium text-gray-900 dark:text-white mb-2">"Zero chemical smell and impeccable craftsmanship"</h4>
+                        <p class="text-sm text-gray-600 dark:text-gray-300 leading-relaxed mb-4">"We ordered the Haven Convertible Crib and 6-Drawer Dresser. As a chemical-sensitive parent, I was amazed that there was zero off-gassing right out of the box. Truly GREENGUARD Gold certified quality."</p>
+                    </div>
+                    <div class="pt-4 border-t border-gray-100 dark:border-gray-700 flex items-center justify-between text-xs text-gray-500 dark:text-gray-400">
+                        <div>
+                            <span class="font-medium text-gray-900 dark:text-white block">Aishwarya S. (Mumbai)</span>
+                            <span>Haven Convertible Crib</span>
+                        </div>
+                        <span class="text-gray-400">2 weeks ago</span>
+                    </div>
+                </div>
+
+                <!-- Review 2 -->
+                <div class="bg-white dark:bg-gray-800 p-6 sm:p-8 rounded-xl border border-gray-100 dark:border-gray-700 shadow-sm flex flex-col justify-between transition-colors">
+                    <div>
+                        <div class="flex items-center gap-1 text-amber-500 mb-3">
+                            <span>★★★★★</span>
+                            <span class="text-xs font-semibold px-2 py-0.5 rounded bg-sage-50 dark:bg-sage-900/40 text-sage-700 dark:text-sage-300 ml-2">Verified Purchase</span>
+                        </div>
+                        <h4 class="font-serif text-lg font-medium text-gray-900 dark:text-white mb-2">"The Cloud Rocker saved our late-night feeds"</h4>
+                        <p class="text-sm text-gray-600 dark:text-gray-300 leading-relaxed mb-4">"The high backrest and contoured lumbar support make midnight feedings so much easier. The oatmeal linen blend fabric is breathable and stains wipe right off with a damp cloth."</p>
+                    </div>
+                    <div class="pt-4 border-t border-gray-100 dark:border-gray-700 flex items-center justify-between text-xs text-gray-500 dark:text-gray-400">
+                        <div>
+                            <span class="font-medium text-gray-900 dark:text-white block">Rohit & Priya K. (Bangalore)</span>
+                            <span>Cloud Nursery Rocker</span>
+                        </div>
+                        <span class="text-gray-400">1 month ago</span>
+                    </div>
+                </div>
+
+                <!-- Review 3 -->
+                <div class="bg-white dark:bg-gray-800 p-6 sm:p-8 rounded-xl border border-gray-100 dark:border-gray-700 shadow-sm flex flex-col justify-between transition-colors">
+                    <div>
+                        <div class="flex items-center gap-1 text-amber-500 mb-3">
+                            <span>★★★★★</span>
+                            <span class="text-xs font-semibold px-2 py-0.5 rounded bg-sage-50 dark:bg-sage-900/40 text-sage-700 dark:text-sage-300 ml-2">Verified Purchase</span>
+                        </div>
+                        <h4 class="font-serif text-lg font-medium text-gray-900 dark:text-white mb-2">"The changing topper design is genius"</h4>
+                        <p class="text-sm text-gray-600 dark:text-gray-300 leading-relaxed mb-4">"We bought the Willow Changing Dresser. Having the changing station at the perfect ergonomic height saved our backs, and when our baby is out of diapers, we can remove the top without visible screw holes."</p>
+                    </div>
+                    <div class="pt-4 border-t border-gray-100 dark:border-gray-700 flex items-center justify-between text-xs text-gray-500 dark:text-gray-400">
+                        <div>
+                            <span class="font-medium text-gray-900 dark:text-white block">Tanvi M. (New Delhi)</span>
+                            <span>Willow Changing Dresser</span>
+                        </div>
+                        <span class="text-gray-400">3 weeks ago</span>
+                    </div>
+                </div>
+            </div>
+        </section>
 
     </main>
 
@@ -358,55 +658,327 @@
         </div>
     </footer>
 
-    <script src="../js/main.js"></script>
-            <script>
+        <script src="../js/main.js"></script>
+    <script>
         const productsList = [
-            { id: 'prod-01', name: 'Haven Convertible Crib', category: 'Cribs & Cots', price: 35000, image: 'https://i.pinimg.com/1200x/96/18/18/961818b0e00fdf7140885a8682a7ce93.jpg' },
-            { id: 'prod-02', name: 'Willow 3-in-1 Crib', category: 'Cribs & Cots', price: 28000, image: 'https://i.pinimg.com/1200x/d7/27/64/d7276431482de4de5a81a06d5539705c.jpg' },
-            { id: 'prod-03', name: 'Meadow Cot', category: 'Cribs & Cots', price: 22000, image: 'https://i.pinimg.com/736x/7d/3c/9d/7d3c9d3fe387f6092a0e916cdd467cc3.jpg' },
-            { id: 'prod-04', name: 'Luna Mini Crib', category: 'Cribs & Cots', price: 18000, image: 'https://i.pinimg.com/736x/9c/fe/59/9cfe597ae8f014d068d441a14aa84023.jpg' },
-            { id: 'prod-05', name: 'Haven 6-Drawer Dresser', category: 'Dressers', price: 45000, image: 'https://i.pinimg.com/1200x/30/e3/cc/30e3ccd8185377de379cd9442c8b71be.jpg' },
-            { id: 'prod-06', name: 'Willow Changing Dresser', category: 'Dressers', price: 32000, image: 'https://i.pinimg.com/736x/8b/d4/b2/8bd4b20ab76b007402e2fa18f29cfd1b.jpg' },
-            { id: 'prod-07', name: 'Oakline Storage Dresser', category: 'Dressers', price: 38000, image: 'https://i.pinimg.com/1200x/3e/d4/64/3ed4649513cc3be22f158dd81bb9d5eb.jpg' },
-            { id: 'prod-08', name: 'Cloud Nursery Rocker', category: 'Rocking Chairs', price: 25000, image: 'https://i.pinimg.com/236x/da/de/c5/dadec541ceb91305eb7f78d8ff29bbef.jpg' },
-            { id: 'prod-09', name: 'Little Haven Toy Cabinet', category: 'Storage', price: 15000, image: 'https://i.pinimg.com/736x/53/7d/38/537d38f12a7845155d5fb2453382acde.jpg' }
-        ];
+    {
+        "id": "prod-01",
+        "name": "Haven Convertible Crib",
+        "category": "Cribs & Cots",
+        "price": 35000,
+        "image": "https://i.pinimg.com/1200x/96/18/18/961818b0e00fdf7140885a8682a7ce93.jpg",
+        "variant": "Warm White • Solid Oak",
+        "material": "FSC-Certified Solid Oak",
+        "dimensions": "135cm x 75cm x 90cm",
+        "description": "A timeless 3-in-1 convertible crib designed to grow with your baby from infancy through toddlerhood.",
+        "stock": true,
+        "rating": 4.9,
+        "reviews": 124
+    },
+    {
+        "id": "prod-02",
+        "name": "Willow 3-in-1 Crib",
+        "category": "Cribs & Cots",
+        "price": 28000,
+        "image": "https://i.pinimg.com/1200x/d7/27/64/d7276431482de4de5a81a06d5539705c.jpg",
+        "variant": "Soft Sage • Sustainable Pine",
+        "material": "Sustainable New Zealand Pine",
+        "dimensions": "130cm x 70cm x 85cm",
+        "description": "Beautifully crafted crib with a soft sage finish and organic curved spindles for serene nursery sleep.",
+        "stock": true,
+        "rating": 4.8,
+        "reviews": 89
+    },
+    {
+        "id": "prod-03",
+        "name": "Meadow Cot",
+        "category": "Cribs & Cots",
+        "price": 22000,
+        "image": "https://i.pinimg.com/736x/7d/3c/9d/7d3c9d3fe387f6092a0e916cdd467cc3.jpg",
+        "variant": "Natural Wood • Birch",
+        "material": "Solid European Birch",
+        "dimensions": "120cm x 60cm x 80cm",
+        "description": "Minimalist and elegant cot for modern compact nurseries, featuring 3 adjustable mattress heights.",
+        "stock": true,
+        "rating": 4.7,
+        "reviews": 56
+    },
+    {
+        "id": "prod-04",
+        "name": "Luna Mini Crib",
+        "category": "Cribs & Cots",
+        "price": 18000,
+        "image": "https://i.pinimg.com/736x/9c/fe/59/9cfe597ae8f014d068d441a14aa84023.jpg",
+        "variant": "Ivory • Solid Beech",
+        "material": "Solid Beech Hardwood",
+        "dimensions": "100cm x 55cm x 80cm",
+        "description": "Perfect space-saving crib for smaller nursery rooms or bedside co-sleeping with rolling caster wheels.",
+        "stock": true,
+        "rating": 4.6,
+        "reviews": 42
+    },
+    {
+        "id": "prod-05",
+        "name": "Haven 6-Drawer Dresser",
+        "category": "Dressers & Changers",
+        "price": 45000,
+        "image": "https://i.pinimg.com/1200x/30/e3/cc/30e3ccd8185377de379cd9442c8b71be.jpg",
+        "variant": "Warm White • Solid Oak",
+        "material": "Solid Oak & Oak Veneer",
+        "dimensions": "140cm x 50cm x 85cm",
+        "description": "Spacious 6-drawer dresser with soft-close whisper glide mechanisms and anti-tip wall anchor kit.",
+        "stock": true,
+        "rating": 4.9,
+        "reviews": 210
+    },
+    {
+        "id": "prod-06",
+        "name": "Willow Changing Dresser",
+        "category": "Dressers & Changers",
+        "price": 32000,
+        "image": "https://i.pinimg.com/736x/8b/d4/b2/8bd4b20ab76b007402e2fa18f29cfd1b.jpg",
+        "variant": "Soft Sage • Pine Changing Topper",
+        "material": "Sustainable Pine & Waterborne Finish",
+        "dimensions": "100cm x 50cm x 90cm",
+        "description": "Dual-purpose dresser that doubles as a changing table with a removable safety topper tray.",
+        "stock": true,
+        "rating": 4.8,
+        "reviews": 115
+    },
+    {
+        "id": "prod-07",
+        "name": "Oakline Storage Dresser",
+        "category": "Dressers & Changers",
+        "price": 38000,
+        "image": "https://i.pinimg.com/1200x/3e/d4/64/3ed4649513cc3be22f158dd81bb9d5eb.jpg",
+        "variant": "Natural Oak • Oak Veneer",
+        "material": "Natural American Oak",
+        "dimensions": "120cm x 45cm x 85cm",
+        "description": "Contemporary dresser with 4 generous storage drawers and recessed minimalist handle grooves.",
+        "stock": true,
+        "rating": 4.7,
+        "reviews": 75
+    },
+    {
+        "id": "prod-08",
+        "name": "Cloud Nursery Rocker",
+        "category": "Rocking Chairs",
+        "price": 25000,
+        "image": "https://i.pinimg.com/236x/da/de/c5/dadec541ceb91305eb7f78d8ff29bbef.jpg",
+        "variant": "Oatmeal • Linen & Solid Wood",
+        "material": "Linen Blend & Solid Birch Base",
+        "dimensions": "80cm x 90cm x 100cm",
+        "description": "Ultra-comfortable upholstered rocking chair with high ergonomic lumbar support for late-night feeds.",
+        "stock": true,
+        "rating": 5,
+        "reviews": 310
+    },
+    {
+        "id": "prod-09",
+        "name": "Little Haven Toy Cabinet",
+        "category": "Nursery Storage",
+        "price": 15000,
+        "image": "https://i.pinimg.com/736x/53/7d/38/537d38f12a7845155d5fb2453382acde.jpg",
+        "variant": "Soft Sage • Child-Safe Pine",
+        "material": "Child-Safe Pine & Non-Toxic MDF",
+        "dimensions": "120cm x 40cm x 60cm",
+        "description": "Low-height storage cabinet perfect for toddler accessibility, Montessori organization, and toy storage.",
+        "stock": true,
+        "rating": 4.9,
+        "reviews": 150
+    },
+    {
+        "id": "prod-10",
+        "name": "Organic Cotton Crib Sheet",
+        "category": "Decor & Bedding",
+        "price": 3500,
+        "image": "https://i.pinimg.com/1200x/33/f3/aa/33f3aa6b4d8c5948cc5beb16a4106334.jpg",
+        "variant": "Sand • 100% Organic Cotton",
+        "material": "100% GOTS Organic Cotton",
+        "dimensions": "140cm x 70cm x 15cm",
+        "description": "Breathable, ultra-soft, completely organic fitted sheet with deep 360-degree elastic hem.",
+        "stock": true,
+        "rating": 5,
+        "reviews": 450
+    },
+    {
+        "id": "prod-11",
+        "name": "Astrid Oval Convertible Crib",
+        "category": "Cribs & Cots",
+        "price": 39000,
+        "image": "https://images.unsplash.com/photo-1544816155-12df9643f363?auto=format&fit=crop&w=800&q=80",
+        "variant": "Natural Ash • Curved Oval Spindles",
+        "material": "FSC-Certified Solid European Ash",
+        "dimensions": "138cm x 78cm x 88cm",
+        "description": "Statement oval-shaped crib with 360-degree airflow spindles that converts from bassinet to full cot and daybed.",
+        "stock": true,
+        "rating": 4.9,
+        "reviews": 84
+    },
+    {
+        "id": "prod-12",
+        "name": "Clara 3-Drawer Compact Changer",
+        "category": "Dressers & Changers",
+        "price": 26000,
+        "image": "https://images.unsplash.com/photo-1595428774223-ef52624120d2?auto=format&fit=crop&w=800&q=80",
+        "variant": "Warm Ivory • Removable Topper",
+        "material": "Solid Wood & Child-Safe Waterborne Finish",
+        "dimensions": "88cm x 50cm x 92cm",
+        "description": "Space-conscious 3-drawer changing chest designed for compact nurseries with safety railing topper included.",
+        "stock": true,
+        "rating": 4.8,
+        "reviews": 67
+    },
+    {
+        "id": "prod-13",
+        "name": "Serene Power Glider Recliner",
+        "category": "Rocking Chairs",
+        "price": 34000,
+        "image": "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?auto=format&fit=crop&w=800&q=80",
+        "variant": "Oatmeal Bouclé • Whisper Power Recline",
+        "material": "Stain-Resistant Bouclé & Steel Mechanism",
+        "dimensions": "85cm x 92cm x 102cm",
+        "description": "Electric whisper-silent power recliner with built-in USB charging port, smooth swivel, and gentle gliding motion.",
+        "stock": true,
+        "rating": 4.9,
+        "reviews": 142
+    },
+    {
+        "id": "prod-14",
+        "name": "Haven Ergonomic Swivel Glider",
+        "category": "Rocking Chairs",
+        "price": 29000,
+        "image": "https://images.unsplash.com/photo-1567538096630-e0c55bd6374c?auto=format&fit=crop&w=800&q=80",
+        "variant": "Soft Sage Velvet • 360 Swivel",
+        "material": "Performance Velvet & Solid Wood Base",
+        "dimensions": "82cm x 88cm x 96cm",
+        "description": "Plush velvet swivel nursing chair with ergonomic headrest and effortless 360-degree rotation.",
+        "stock": true,
+        "rating": 4.8,
+        "reviews": 98
+    },
+    {
+        "id": "prod-15",
+        "name": "Classic Spindle Rocking Chair",
+        "category": "Rocking Chairs",
+        "price": 21000,
+        "image": "https://images.unsplash.com/photo-1505693314120-0d443867891c?auto=format&fit=crop&w=800&q=80",
+        "variant": "Solid Ash • Contoured Lumbar",
+        "material": "100% Solid Ash Hardwood",
+        "dimensions": "75cm x 85cm x 95cm",
+        "description": "Heirloom-grade solid wood rocking chair with precision hand-turned spindles and contoured lumbar support.",
+        "stock": true,
+        "rating": 4.7,
+        "reviews": 53
+    },
+    {
+        "id": "prod-16",
+        "name": "Montessori Front-Facing Bookcase",
+        "category": "Nursery Storage",
+        "price": 12000,
+        "image": "https://images.unsplash.com/photo-1594026112284-02bb6f3352fe?auto=format&fit=crop&w=800&q=80",
+        "variant": "Natural Pine • Low Accessible Reach",
+        "material": "FSC-Certified Solid Pine",
+        "dimensions": "85cm x 35cm x 75cm",
+        "description": "Low-profile front-facing book display designed to foster early reading, independence, and tidy organization.",
+        "stock": true,
+        "rating": 4.9,
+        "reviews": 118
+    },
+    {
+        "id": "prod-17",
+        "name": "Willow Dual-Door Nursery Wardrobe",
+        "category": "Nursery Storage",
+        "price": 42000,
+        "image": "https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?auto=format&fit=crop&w=800&q=80",
+        "variant": "Soft Sage • Clothes Rail & 2 Drawers",
+        "material": "Solid Wood Frame & Anti-Tip Hardware",
+        "dimensions": "90cm x 52cm x 175cm",
+        "description": "Full-height nursery armoire with hanging rail, adjustable shelves, and 2 deep bottom storage drawers.",
+        "stock": true,
+        "rating": 4.8,
+        "reviews": 62
+    },
+    {
+        "id": "prod-18",
+        "name": "Quilted Organic Muslin Playmat",
+        "category": "Decor & Bedding",
+        "price": 4800,
+        "image": "https://images.unsplash.com/photo-1519689680058-324335c77eba?auto=format&fit=crop&w=800&q=80",
+        "variant": "Earthy Sage & Ivory • Reversible",
+        "material": "100% GOTS Organic Cotton Muslin",
+        "dimensions": "110cm x 110cm",
+        "description": "Extra-soft quilted tummy time playmat with recycled hypoallergenic filling and machine-washable design.",
+        "stock": true,
+        "rating": 5,
+        "reviews": 194
+    }
+];
 
         function initProductPage() {
             const grid = document.getElementById('product-grid');
             const count = document.getElementById('product-count');
+            const searchInput = document.getElementById('product-search-input');
+            const clearSearchBtn = document.getElementById('clear-search-btn');
+            const filterBtns = document.querySelectorAll('.filter-btn');
+            const sortSelect = document.getElementById('sort-select');
+
             if (!grid || !count) return;
 
+            let currentCategory = 'All';
+            let currentSearch = '';
+
+            // Read URL params
             const urlParams = new URLSearchParams(window.location.search);
-            const initialCategoryParam = urlParams.get('category');
-            
-            // Normalize category matching
+            const initialCat = urlParams.get('category');
+            const initialSearch = urlParams.get('search');
+
+            if (initialCat) {
+                const found = Array.from(filterBtns).find(b => b.dataset.cat.toLowerCase() === initialCat.toLowerCase());
+                if (found) currentCategory = found.dataset.cat;
+            }
+            if (initialSearch && searchInput) {
+                currentSearch = initialSearch.trim();
+                searchInput.value = currentSearch;
+                if (clearSearchBtn) clearSearchBtn.classList.remove('hidden');
+            }
+
             function matchCategory(prodCat, filterCat) {
                 if (!filterCat || filterCat === 'All') return true;
-                const p = prodCat.toLowerCase().trim();
-                const f = filterCat.toLowerCase().trim();
-                if (f === 'all' || f === 'all pieces' || f === 'all collection') return true;
+                const p = prodCat.toLowerCase();
+                const f = filterCat.toLowerCase();
                 if (f.includes('crib') || f.includes('cot')) return p.includes('crib') || p.includes('cot');
-                if (f.includes('dresser')) return p.includes('dresser');
-                if (f.includes('rock') || f.includes('chair')) return p.includes('rock') || p.includes('chair');
-                if (f.includes('storage') || f.includes('cabinet')) return p.includes('storage');
+                if (f.includes('dresser') || f.includes('changer')) return p.includes('dresser') || p.includes('changer');
+                if (f.includes('rock') || f.includes('chair')) return p.includes('rock') || p.includes('chair') || p.includes('glider');
+                if (f.includes('storage') || f.includes('cabinet') || f.includes('wardrobe')) return p.includes('storage') || p.includes('cabinet') || p.includes('wardrobe') || p.includes('bookcase');
+                if (f.includes('decor') || f.includes('bedding') || f.includes('accessor')) return p.includes('decor') || p.includes('bedding') || p.includes('accessor') || p.includes('sheet') || p.includes('playmat');
                 return p === f;
             }
 
-            let currentCategory = 'All';
-            if (initialCategoryParam) {
-                // Determine if matches one of the tab categories
-                const validTabs = ['Cribs & Cots', 'Dressers', 'Rocking Chairs', 'Storage'];
-                const matchedTab = validTabs.find(tab => matchCategory(tab, initialCategoryParam));
-                if (matchedTab) {
-                    currentCategory = matchedTab;
-                }
-            }
+            function renderProducts() {
+                let filtered = productsList.filter(p => {
+                    const catMatches = matchCategory(p.category, currentCategory);
+                    if (!catMatches) return false;
+                    if (!currentSearch) return true;
+                    
+                    const q = currentSearch.toLowerCase();
+                    const inName = p.name.toLowerCase().includes(q);
+                    const inCat = p.category.toLowerCase().includes(q);
+                    const inVariant = (p.variant || '').toLowerCase().includes(q);
+                    const inMaterial = (p.material || '').toLowerCase().includes(q);
+                    const inDesc = (p.description || '').toLowerCase().includes(q);
+                    
+                    // Smart synonym & category matching
+                    let synonymMatch = false;
+                    if ((q.includes('rock') || q.includes('glid') || q.includes('reclin') || q.includes('chair')) && p.category.toLowerCase().includes('rock')) synonymMatch = true;
+                    if ((q.includes('crib') || q.includes('cot') || q.includes('bed') || q.includes('bassin')) && p.category.toLowerCase().includes('crib')) synonymMatch = true;
+                    if ((q.includes('dress') || q.includes('chang') || q.includes('drawer')) && p.category.toLowerCase().includes('dresser')) synonymMatch = true;
+                    if ((q.includes('stor') || q.includes('wardrobe') || q.includes('cabinet') || q.includes('book') || q.includes('shelf')) && p.category.toLowerCase().includes('storage')) synonymMatch = true;
+                    if ((q.includes('sheet') || q.includes('mat') || q.includes('cotton') || q.includes('bedding') || q.includes('decor')) && p.category.toLowerCase().includes('decor')) synonymMatch = true;
 
-            const renderProducts = () => {
-                let filtered = productsList.filter(p => matchCategory(p.category, currentCategory));
-                
-                const sortSelect = document.getElementById('sort-select');
+                    return inName || inCat || inVariant || inMaterial || inDesc || synonymMatch;
+                });
+
                 if (sortSelect) {
                     if (sortSelect.value === 'Price: Low to High') {
                         filtered.sort((a, b) => a.price - b.price);
@@ -416,18 +988,25 @@
                         filtered.reverse();
                     }
                 }
-                
+
                 if (filtered.length === 0) {
                     grid.innerHTML = `
                         <div class="col-span-full py-16 text-center">
-                            <p class="text-base text-gray-500 dark:text-gray-400 mb-4">No nursery pieces found in this category.</p>
-                            <button id="reset-filter-btn" class="px-5 py-2.5 bg-sage-600 hover:bg-sage-700 text-white rounded-md text-sm font-medium transition-colors shadow-sm">View All Pieces</button>
+                            <div class="w-16 h-16 mx-auto bg-gray-100 dark:bg-gray-800 rounded-full flex items-center justify-center mb-4 text-gray-400">
+                                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+                            </div>
+                            <h3 class="text-xl font-serif text-gray-900 dark:text-white mb-2">No matching nursery pieces found</h3>
+                            <p class="text-sm text-gray-500 dark:text-gray-400 mb-6 max-w-md mx-auto">We couldn't find any items matching "${currentSearch || currentCategory}". Try checking your spelling or clearing filters.</p>
+                            <button id="reset-all-filters-btn" class="px-6 py-2.5 bg-sage-600 hover:bg-sage-700 text-white rounded-md text-sm font-medium transition-colors shadow-sm">View All 18 Pieces</button>
                         </div>
                     `;
-                    const resetBtn = document.getElementById('reset-filter-btn');
+                    const resetBtn = document.getElementById('reset-all-filters-btn');
                     if (resetBtn) {
                         resetBtn.addEventListener('click', () => {
                             currentCategory = 'All';
+                            currentSearch = '';
+                            if (searchInput) searchInput.value = '';
+                            if (clearSearchBtn) clearSearchBtn.classList.add('hidden');
                             setActiveTab('All');
                             renderProducts();
                         });
@@ -444,40 +1023,36 @@
                                 </button>
                                 <div class="text-xs text-gray-500 dark:text-gray-400 mb-1">${product.category}</div>
                                 <h3 class="font-serif text-base sm:text-lg mb-1 text-gray-900 dark:text-white transition-colors pr-6">${product.name}</h3>
-                                <div class="flex justify-between items-center mt-auto pt-3 sm:pt-4">
+                                <p class="text-xs text-gray-400 dark:text-gray-500 mb-2 truncate">${product.variant || ''}</p>
+                                <div class="flex justify-between items-center mt-auto pt-3 sm:pt-4 border-t border-gray-100 dark:border-gray-700">
                                     <span class="font-medium text-sm sm:text-base text-gray-900 dark:text-white transition-colors">₹${product.price.toLocaleString('en-IN')}</span>
                                     <div class="flex items-center gap-2">
-                                <a href="product-details.html?id=${product.id}" class="text-xs sm:text-sm underline text-gray-600 dark:text-gray-300 hover:text-sage-600 transition-colors">View</a>
-                                <button class="add-to-cart-btn px-2.5 py-1 bg-sage-600 hover:bg-sage-700 text-white text-xs font-medium rounded transition-colors shadow-sm" data-id="${product.id}">+ Cart</button>
-                            </div>
+                                        <a href="product-details.html?id=${product.id}" class="text-xs sm:text-sm underline text-gray-600 dark:text-gray-300 hover:text-sage-600 transition-colors">View</a>
+                                        <button class="add-to-cart-btn px-2.5 py-1 bg-sage-600 hover:bg-sage-700 text-white text-xs font-medium rounded transition-colors shadow-sm" data-id="${product.id}">+ Cart</button>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     `).join('');
                 }
 
-                count.textContent = `${filtered.length} items`;
-                if(window.initBadges) window.initBadges();
-            };
+                count.textContent = `${filtered.length} item${filtered.length === 1 ? '' : 's'}`;
+                if (window.initBadges) window.initBadges();
+            }
 
-            const filterBtns = document.querySelectorAll('.filter-btn');
             function setActiveTab(cat) {
                 filterBtns.forEach(b => {
                     if (b.dataset.cat === cat || (cat === 'All' && b.dataset.cat === 'All')) {
-                        b.classList.add('text-sage-600', 'dark:text-sage-400', 'border-sage-600', 'dark:border-sage-400');
-                        b.classList.remove('text-gray-500', 'dark:text-gray-400', 'border-transparent');
+                        b.classList.remove('bg-gray-100', 'dark:bg-gray-800', 'text-gray-600', 'dark:text-gray-300');
+                        b.classList.add('bg-sage-600', 'text-white');
                     } else {
-                        b.classList.remove('text-sage-600', 'dark:text-sage-400', 'border-sage-600', 'dark:border-sage-400');
-                        b.classList.add('text-gray-500', 'dark:text-gray-400', 'border-transparent');
+                        b.classList.remove('bg-sage-600', 'text-white');
+                        b.classList.add('bg-gray-100', 'dark:bg-gray-800', 'text-gray-600', 'dark:text-gray-300');
                     }
                 });
             }
 
-            if (currentCategory !== 'All') {
-                setActiveTab(currentCategory);
-                renderProducts();
-            }
-
+            // Bind Category Pills
             filterBtns.forEach(btn => {
                 btn.addEventListener('click', () => {
                     currentCategory = btn.dataset.cat;
@@ -486,11 +1061,41 @@
                 });
             });
 
-            const sortSelect = document.getElementById('sort-select');
+            // Bind Live Search Input
+            if (searchInput) {
+                searchInput.addEventListener('input', (e) => {
+                    currentSearch = e.target.value.trim();
+                    if (clearSearchBtn) {
+                        if (currentSearch.length > 0) {
+                            clearSearchBtn.classList.remove('hidden');
+                        } else {
+                            clearSearchBtn.classList.add('hidden');
+                        }
+                    }
+                    renderProducts();
+                });
+            }
+
+            // Bind Clear Search Button
+            if (clearSearchBtn) {
+                clearSearchBtn.addEventListener('click', () => {
+                    currentSearch = '';
+                    if (searchInput) searchInput.value = '';
+                    clearSearchBtn.classList.add('hidden');
+                    renderProducts();
+                });
+            }
+
+            // Bind Sort Dropdown
             if (sortSelect) {
                 sortSelect.addEventListener('change', () => {
                     renderProducts();
                 });
+            }
+
+            if (currentCategory !== 'All' || currentSearch !== '') {
+                setActiveTab(currentCategory);
+                renderProducts();
             }
         }
 
